@@ -1,0 +1,41 @@
+.navigation-menu {
+    display: flex;
+
+    background-color: #000;
+}
+
+.navigation-menu__inner-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin: 0 auto;
+}
+
+.navigation-menu ul {
+    display: flex;
+    gap: 20px;
+
+    list-style: none;
+}
+
+.navigation-menu li {
+    display: flex;
+
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+.navigation-menu li > a {
+    color: #fff;
+    text-decoration: none !important;
+    transition: 0.2s;
+}
+
+.navigation-menu li > a:hover {
+    color: #d5ab71;
+    text-decoration: none !important;
+}
