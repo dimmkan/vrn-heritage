@@ -1,0 +1,1603 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="js/jquery-3.0.0.min.js"> </script>
+  <script src="js/jquery.session.js"> </script>
+  <script type="text/javascript" src="js/data.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/openLayer/ol.js"></script>
+  <link rel="stylesheet" href="js/openLayer/ol.css" type="text/css">
+  <link rel="stylesheet" href="css/style.min.css" type="text/css">
+  <style>
+    .map {
+      height: 100%;
+      width: 100%;
+    }
+
+    .bw {
+      filter: grayscale(100%);
+    }
+
+    .ol-control button {
+      display: block;
+      margin: 1px;
+      padding: 0;
+      color: #ac7a35;
+      font-size: 1.14em;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      height: 30px;
+      width: 30px;
+      line-height: .4em;
+      background-color: white;
+      border: none;
+      border-radius: 2px;
+    }
+
+    .ol-control button:hover {
+      text-decoration: none;
+      background-color: #eed0a6;
+    }
+
+    .ol-control {
+      position: absolute;
+      background-color: transparent;
+      border-radius: 4px;
+      padding: 2px;
+      padding-left: 95%;
+      padding-top: 2%;
+    }
+
+    .distStyle {
+      font-family: PT Sans Caption;
+      font-size: 12px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 2;
+      letter-spacing: 0.6px;
+      text-align: left;
+      color: #000000;
+    }
+
+    .distNameStyle {
+      font-family: Prata;
+      font-size: 24px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 0.7px;
+      text-align: left;
+      color: #000000;
+      margin: -12px 0px 0px 0;
+    }
+
+    .fLineMap {
+      width: 20px;
+      height: 1px;
+      background-color: black;
+      margin: 8px 9px 3px 0;
+      display: inline-block;
+    }
+
+    .styleRegList {
+      font-family: PT Sans Caption;
+      font-size: 14px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.14;
+      letter-spacing: 0.7px;
+      text-align: left;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .popover-content {
+      min-width: 256px;
+    }
+
+    .popover-content {
+      padding: 0px 0px;
+    }
+
+    .carousel-caption {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+
+
+    .styleTextTooltip {
+      font-family: Prata;
+      font-size: 16px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 0.8px;
+      text-align: left;
+      color: #000000;
+    }
+
+    .StyleSlideIcon1 {
+      height: 55px;
+      width: 320px;
+      cursor: pointer;
+      background-color: #eed0a6;
+      transition: width 500ms ease;
+      -moz-transition: width 500ms ease;
+      -ms-transition: width 500ms ease;
+      -o-transition: width 500ms ease;
+      -webkit-transition: width 500ms ease;
+    }
+
+    .styleIconsSlide {
+      font-family: PT Sans Caption;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.14;
+      letter-spacing: 0.7px;
+      text-align: left;
+      color: #8f5a10;
+    }
+
+    .timeLineSt {
+      height: 50px;
+      width: 20%;
+      background-color: white;
+      color: black;
+      cursor: pointer;
+      box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    .centuryTimeLine {
+      font-family: Prata;
+      font-size: 24px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 1.2px;
+      text-align: center;
+      color: #000000;
+    }
+
+    .centuryLetterTimeLine {
+      font-family: PT Sans;
+      font-size: 12px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 9px;
+      text-align: left;
+      color: #000000;
+      margin-left: 32px;
+    }
+
+    .smallStDiv {
+      background: linear-gradient(transparent 0%, transparent 35%, #7e9d5f 35%, #7e9d5f 60%, transparent 60%);
+      width: 15%;
+      height: 8px;
+      display: inline-block;
+      border-left: 2px solid #7e9d5f;
+    }
+
+    .smallStDiv2 {
+      background: linear-gradient(transparent 0%, transparent 35%, #378b8b 35%, #378b8b 60%, transparent 60%);
+      width: 15%;
+      height: 8px;
+      display: inline-block;
+      border-left: 2px solid #378b8b;
+    }
+
+    .smallStDiv3 {
+      background: linear-gradient(transparent 0%, transparent 35%, #4694ca 35%, #4694ca 60%, transparent 60%);
+      width: 15%;
+      height: 8px;
+      display: inline-block;
+      border-left: 2px solid #4694ca;
+    }
+
+    .smallStDiv4 {
+      background: linear-gradient(transparent 0%, transparent 35%, #ec771a 35%, #ec771a 60%, transparent 60%);
+      width: 15%;
+      height: 8px;
+      display: inline-block;
+      border-left: 2px solid #ec771a
+    }
+
+    .smallStDiv5 {
+      background: linear-gradient(transparent 0%, transparent 35%, #c84859 35%, #c84859 60%, transparent 60%);
+      width: 15%;
+      height: 8px;
+      display: inline-block;
+      border-left: 2px solid #c84859;
+    }
+
+    #site-navigation-wrap .dropdown-menu {
+      position: relative;
+      top: auto !important;
+      float: none;
+      display: block;
+      border: 0;
+    }
+
+    #site-navigation-wrap {
+      float: left;
+      display: block;
+      border: 0;
+    }
+
+    .text-wrap {
+      font-family: PT Sans Caption;
+      font-size: 14px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.14;
+      letter-spacing: 0.7px;
+      text-align: left;
+      color: #000000;
+    }
+
+    .text-wrap:hover {
+      color: #d5ab71;
+      background-color: white;
+    }
+
+    .myBar {
+      width: 1%;
+      height: 56px;
+      background-color: #d5ab71;
+      white-space: nowrap;
+      font-family: PT Sans Caption;
+      font-size: 14px;
+    }
+
+    .myProgress {
+      width: 230px;
+      height: 56px;
+      font-family: PT Sans Caption;
+      font-size: 14px;
+      color: #d5ab71;
+      background: linear-gradient(to right, rgba(213, 171, 113, 0.5) 50%, rgba(255, 0, 0, 0) 50%);
+      cursor: pointer;
+    }
+
+    .bgStroke {
+      background-image: url('stroke4.png');
+      background-repeat: no-repeat;
+      background-position: 30px 26px;
+      height: 488px;
+    }
+
+    .bgPic {
+      background-image: url('stroke4.png'), url('castle.png');
+      background-repeat: no-repeat;
+      background-position: 30px 26px, left center;
+      height: 488px;
+    }
+
+    #line {
+      opacity: 1;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url('stroke4.png')
+    }
+
+    .stTitle {
+      font-family: PT Sans Caption;
+      font-size: 12px;
+      color: #d5ab71;
+    }
+
+    .stTitle2 {
+      font-family: Prata;
+      font-size: 24px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.33;
+      letter-spacing: 1.2px;
+      text-align: left;
+      color: #000000;
+    }
+
+    .tBigLatter::first-letter {
+      font-family: Prata;
+      font-size: 42px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 2.1px;
+      text-align: left;
+      color: #d5ab71;
+      float: left;
+      margin: 0px 4px -11px 0;
+    }
+
+    .tBigLatter {
+      font-family: PT Sans Caption;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.71;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000000;
+    }
+
+
+
+    .stTitle3 {
+      font-family: PT Sans Caption;
+      font-size: 14px;
+    }
+
+    .styleArrow {
+      font-size: 36px;
+      cursor: pointer;
+      color: #d5ab71;
+    }
+
+
+    .number {
+      font-family: Prata;
+      font-size: 20px;
+    }
+
+
+    .mainTitle {
+      font-family: Prata;
+      font-size: 48px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 2.4px;
+      text-align: left;
+      color: #000000;
+    }
+
+    .myProgress2 {
+      width: 230px;
+      height: 2px;
+      color: #d5ab71;
+      background: rgba(213, 171, 113, 0.3);
+      display: inline-block;
+      margin: 5px;
+
+    }
+
+    .myBar2 {
+      width: 10%;
+      height: 2px;
+      background-color: #d5ab71;
+
+    }
+
+    .circle {
+      height: 40px;
+      width: 40px;
+      margin: 5x;
+      background: transparent;
+      transition: box-shadow .1s, color 1s;
+      background-size: 0 0;
+      background-position: 50% 50%;
+      border: none;
+      box-shadow: inset 0 0 0 50px transparent;
+      display: inline-block;
+    }
+
+    /* узнать подробнее */
+    .first_learnb_div {
+      background-color: rgba(213, 171, 113, 0.5);
+      width: 115px;
+      height: 56px;
+      cursor: pointer;
+    }
+
+    .first_learnb_div:hover {
+      animation-name: run_first;
+      animation-duration: 1.3s;
+      width: 230px;
+    }
+
+    .second_learnb_div {
+      background-color: #d5ab71;
+      width: 5px;
+      height: 56px;
+    }
+
+    .second_learnb_div:hover {
+      animation-name: run_second;
+      animation-duration: 1s;
+      width: 230px;
+    }
+
+
+    @keyframes run_second {
+      0% {
+        width: 5px;
+      }
+
+      100% {
+        width: 230px;
+      }
+    }
+
+    @keyframes run_first {
+      0% {
+        width: 115px;
+      }
+
+      100% {
+        width: 230px;
+      }
+    }
+
+    .learnM_style {
+      position: absolute;
+      color: white;
+      width: 230px;
+      height: 56px;
+      padding: 17px;
+      color: #d5ab71;
+      font-family: PT Sans Caption;
+      font-size: 12px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 2;
+      letter-spacing: 0.6px;
+    }
+
+    .learnM_style:hover {
+      position: absolute;
+      width: 230px;
+      height: 56px;
+      padding: 17px;
+      color: black;
+      font-family: PT Sans Caption;
+    }
+
+    .arrowRight {
+      animation: slide1 1s ease-in-out infinite;
+      margin-left: 9px;
+      width: 24px;
+      height: 10px;
+    }
+
+    .circle:hover {
+      border-radius: 30px;
+      box-shadow: inset 0 0 0 0px #d5ab71;
+      color: #d5ab71;
+      background: #d5ab71;
+    }
+
+    .fLineMain {
+      width: 29px;
+      height: 1px;
+      background-color: #d5ab71;
+      margin: 8px 0px 0px 0;
+    }
+
+    .secLineMain {
+      width: 96px;
+      height: 1px;
+      background-color: #d5ab71;
+      margin: 8px 0px 0px 0;
+    }
+
+    .borderStyle {
+      outline: 2px solid rgba(213, 171, 113, .6);
+      outline-offset: -25px;
+    }
+
+    .borderStyle1 {
+      border-bottom: 2px solid transparent;
+      border-image: 1 linear-gradient(90deg,
+          rgba(213, 171, 113, .6) 20%, rgba(213, 171, 113, .6) 40%,
+          rgba(213, 171, 113, 0) 40%, rgba(213, 171, 113, 0) 80%,
+          rgba(213, 171, 113, .6) 80%, rgba(213, 171, 113, .6) 100%);
+      outline-offset: -25px;
+    }
+
+    .borderStyle2 {
+      border-top: 2px solid transparent;
+      border-left: 2px solid transparent;
+      border-right: 2px solid transparent;
+      border-color: rgba(213, 171, 113, .6);
+      outline-offset: -25px;
+    }
+
+    .bigTitle {
+      font-family: Prata;
+      font-size: 60px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.07;
+      letter-spacing: 3px;
+      text-align: left;
+      color: #ffffff;
+    }
+
+    .caption {
+      position: absolute;
+      top: 23%;
+      left: 20%;
+      color: white;
+      z-index: 5;
+
+    }
+
+    .blackout {
+      background-color: #000;
+      height: 100%;
+      left: 0;
+      opacity: 0.3;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 4;
+    }
+
+    .slick-slide {
+      position: relative;
+
+      video {
+        display: block;
+        position: absolute;
+      }
+    }
+
+    .myBar {
+      width: 1%;
+      height: 56px;
+      background-color: #d5ab71;
+      white-space: nowrap;
+      font-family: PT Sans Caption;
+      font-size: 14px;
+    }
+
+    .myProgress {
+      width: 230px;
+      height: 56px;
+      font-family: "PT Sans Caption";
+      font-size: 14px;
+      color: #d5ab71;
+      background: linear-gradient(to right, rgba(213, 171, 113, 0.5) 50%, rgba(255, 0, 0, 0) 50%);
+      cursor: pointer;
+    }
+
+    .bgStroke {
+      background-image: url('stroke4.png');
+      background-repeat: no-repeat;
+      background-position: 30px 26px;
+      height: 488px;
+    }
+
+    .bgPic {
+      background-image: url('stroke4.png'), url('castle.png');
+      background-repeat: no-repeat;
+      background-position: 30px 26px, left center;
+      height: 488px;
+
+    }
+
+    #line {
+      opacity: 1;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url('stroke4.png')
+    }
+
+    .stTitle {
+      font-family: PT Sans Caption;
+      font-size: 12px;
+      color: #d5ab71;
+    }
+
+    .stTitle2 {
+      font-family: Prata;
+      font-size: 24px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.33;
+      letter-spacing: 1.2px;
+      text-align: left;
+      color: #000000;
+    }
+
+    .tBigLatter::first-letter {
+      font-family: Prata;
+      font-size: 42px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 2.1px;
+      text-align: left;
+      color: #d5ab71;
+      float: left;
+      margin: 0px 4px -11px 0;
+    }
+
+    .tBigLatter {
+      font-family: PT Sans Caption;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.71;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000000;
+    }
+
+
+
+    .stTitle3 {
+      font-family: PT Sans Caption;
+      font-size: 14px;
+    }
+
+    .styleArrow {
+      font-size: 36px;
+      cursor: pointer;
+      color: #d5ab71;
+    }
+
+
+    #number {
+      font-family: Prata;
+      font-size: 20px;
+    }
+
+
+    .mainTitle {
+      font-family: Prata;
+      font-size: 48px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 2.4px;
+      text-align: left;
+      color: #000000;
+    }
+
+    .myProgress2 {
+      width: 230px;
+      height: 2px;
+      color: #d5ab71;
+      background: rgba(213, 171, 113, 0.3);
+      display: inline-block;
+      margin: 5px;
+
+    }
+
+    .myBar2 {
+      width: 10%;
+      height: 2px;
+      background-color: #d5ab71;
+
+    }
+
+    .circle {
+      height: 40px;
+      width: 40px;
+      margin: 5x;
+      background: #d5ab71;
+      transition: box-shadow .1s, color 1s;
+      background-size: 0 0;
+      background-position: 50% 50%;
+      border: none;
+      box-shadow: inset 0 0 0 50px white;
+      display: inline-block;
+    }
+
+    .circle:hover {
+      border-radius: 30px;
+      box-shadow: inset 0 0 0 0px white;
+      color: #d5ab71;
+    }
+
+    .fLineMain {
+      width: 29px;
+      height: 1px;
+      background-color: #d5ab71;
+      margin: 8px 0px 0px 0;
+    }
+
+    .secLineMain {
+      width: 96px;
+      height: 1px;
+      background-color: #d5ab71;
+      margin: 8px 0px 0px 0;
+    }
+
+    .borderStyle {
+      outline: 2px solid rgba(213, 171, 113, .6);
+      outline-offset: -25px;
+    }
+
+    .borderStyle1 {
+      border-bottom: 2px solid transparent;
+      border-image: 1 linear-gradient(90deg,
+          rgba(213, 171, 113, .6) 20%, rgba(213, 171, 113, .6) 40%,
+          rgba(213, 171, 113, 0) 40%, rgba(213, 171, 113, 0) 80%,
+          rgba(213, 171, 113, .6) 80%, rgba(213, 171, 113, .6) 100%);
+      outline-offset: -25px;
+    }
+
+    .borderStyle2 {
+      border-top: 2px solid transparent;
+      border-left: 2px solid transparent;
+      border-right: 2px solid transparent;
+      border-color: rgba(213, 171, 113, .6);
+      outline-offset: -25px;
+    }
+  </style>
+  <title></title>
+</head>
+
+<body>
+
+  <div id="map" class="map" style="width: 100%; height: 100%"></div>
+  <div id="disp" style="display:none;">
+
+    <div id="nameReg" class="distNameStyle"></div>
+    <div id="boguchar">
+      <div id="lnMap" class="fLineMap"></div>
+      <p id="districtDescription" class="distStyle" style="display: inline-block;">РАЙОН</p>
+    </div>
+    <div id="popup"></div>
+  </div>
+  <div id="marker" title="Marker"></div>
+
+  <div class="form-group" style="position: absolute;  width:320px; margin-top: -48%;margin-left: 4%; ">
+    <select class="form-control styleRegList" id="sel1">
+      <option class="styleRegList" id="empty">ВЫБЕРИТЕ РАЙОН</option>
+      <option class="styleRegList" id="33" style="color:black;">ВОРОНЕЖ</option>
+      <option class="styleRegList" id="2" style="color:black;">АННИНСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="3" style="color:black;">БОБРОВСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="1" style="color:black;">БОГУЧАРСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="4" style="color:black;">БОРИСОГЛЕБСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="5" style="color:black;">БУТУРЛИНОВСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="6" style="color:black;">ВЕРХНЕМАМОНСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="7" style="color:black;">ВЕРХНЕХАВСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="8" style="color:black;">ВОРОБЬЕВСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="9" style="color:black;">ГРИБАНОВСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="10" style="color:black;">КАЛАЧЕЕВСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="11" style="color:black;">КАМЕНСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="12" style="color:black;">КАНТЕМИРОВСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="13" style="color:black;">КАШИРСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="14" style="color:black;">ЛИСКИНСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="15" style="color:black;">НИЖНЕДЕВИЦКИЙ РАЙОН</option>
+      <option class="styleRegList" id="16" style="color:black;">НОВОУСМАНСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="17" style="color:black;">НОВОХОПЕРСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="18" style="color:black;">ОЛЬХОВАТСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="19" style="color:black;">ОСТРОГОЖСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="20" style="color:black;">ПАВЛОВСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="21" style="color:black;">ПАНИНСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="22" style="color:black;">ПЕТРОПАВЛОВСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="23" style="color:black;">ПОВОРИНСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="24" style="color:black;">ПОДГОРЕНСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="25" style="color:black;">РАМОНСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="26" style="color:black;">РЕПЬЁВСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="27" style="color:black;">РОССОШАНСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="28" style="color:black;">СЕМИЛУКСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="29" style="color:black;">ТАЛОВСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="30" style="color:black;">ТЕРНОВСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="31" style="color:black;">ХОХОЛЬСКИЙ РАЙОН</option>
+      <option class="styleRegList" id="32" style="color:black;">ЭРТИЛЬСКИЙ РАЙОН</option>
+
+    </select>
+  </div>
+  <div id="slideIcon1" class="StyleSlideIcon1"
+    style="position: absolute; margin-top: -43%;margin-left: 4%; width:320px;">
+    <img id="icon1" src="js/icons/icon2.png" style="background-color:#eed0a6;margin:12px;">
+    <span class="styleIconsSlide">Памятники</span>
+  </div>
+  <div id="slideIcon2" class="StyleSlideIcon1"
+    style="position: absolute; margin-top: -39.5%;margin-left: 4%; width:320px;">
+    <img id="icon2" src="js/icons/icon3.png" style="background-color:#eed0a6;margin:16px;margin-left:12px;">
+    <span class="styleIconsSlide">Ансамбли</span>
+  </div>
+  <div id="slideIcon3" class="StyleSlideIcon1"
+    style="position: absolute; margin-top: -35.95%;margin-left: 4%; width:320px;">
+    <img id="icon3" src="js/icons/icon1.png" style="background-color:#eed0a6;margin:12px;">
+    <span class="styleIconsSlide">Достопримечательные места</span>
+  </div>
+
+  <div class="col-md-12">
+    <div class="row " style="background-color:white; position:absolute;width:100%; bottom: 5%;">
+      <div id="XVI" class="col-md-2 timeLineSt centuryTimeLine"
+        style="border-bottom: 4px solid #7e9d5f; background-color:rgba(126, 157, 95, 0.3);">
+        XVI <div class="smallStDiv"> </div>
+        <div class="smallStDiv"> </div>
+        <div class="smallStDiv"> </div>
+        <div class="smallStDiv" style="border-right: 2px solid #7e9d5f;"> </div>
+        <p class="centuryLetterTimeLine">ВЕК</p>
+      </div>
+
+      <div id="XVII" class="col-md-2 timeLineSt centuryTimeLine"
+        style="border-bottom: 4px solid #378b8b; background-color:rgba(55, 139, 139, 0.3)">
+        XVII <div class="smallStDiv2"> </div>
+        <div class="smallStDiv2"> </div>
+        <div class="smallStDiv2"> </div>
+        <div class="smallStDiv2" style="border-right: 2px solid #378b8b;"> </div>
+        <p class="centuryLetterTimeLine">ВЕК</p>
+      </div>
+
+      <div id="XVIII" class="col-md-2 timeLineSt centuryTimeLine"
+        style="border-bottom: 4px solid #4694ca;background-color:rgba(70, 148, 202, 0.3)">
+        XVIII <div class="smallStDiv3"> </div>
+        <div class="smallStDiv3"> </div>
+        <div class="smallStDiv3"> </div>
+        <div class="smallStDiv3" style="border-right: 2px solid #4694ca;"> </div>
+        <p class="centuryLetterTimeLine">ВЕК</p>
+      </div>
+
+      <div id="XIX" class="col-md-2 timeLineSt centuryTimeLine"
+        style="border-bottom: 4px solid #ec771a;background-color:rgba(236, 119, 26, 0.3)">
+        XIX <div class="smallStDiv4"> </div>
+        <div class="smallStDiv4"> </div>
+        <div class="smallStDiv4"> </div>
+        <div class="smallStDiv4" style="border-right: 2px solid #ec771a;"> </div>
+        <p class="centuryLetterTimeLine">ВЕК</p>
+      </div>
+
+      <div id="XX" class="col-md-2 timeLineSt centuryTimeLine"
+        style="border-bottom: 4px solid #c84859;background-color:rgba(200, 72, 89, 0.3)">
+        XX <div class="smallStDiv5"> </div>
+        <div class="smallStDiv5"> </div>
+        <div class="smallStDiv5"> </div>
+        <div class="smallStDiv5" style="border-right: 2px solid #c84859;"> </div>
+        <p class="centuryLetterTimeLine">ВЕК</p>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+
+    //select 
+    var $j = jQuery.noConflict();
+    var building = 'building'; var church = true; var monument = true; var grave = true;
+    var cen16 = true; var cen17 = true; var cen18 = true; var cen19 = true; var cen20 = true;
+
+    //clickCentery
+    $j("#XVI").click(function () {
+      if ($j("#XVI").css("background-color") == "rgb(255, 255, 255)") {
+        cen16 = true;
+        showPlace();
+        $j("#XVI").css("background-color", "rgba(126, 157, 95, 0.3)");
+      } else {
+        $j("#XVI").css("background-color", "white");
+        cen16 = false;
+        showPlace();
+
+      }
+    });
+    $j("#XVII").click(function () {
+      if ($j("#XVII").css("background-color") == "rgb(255, 255, 255)") {
+        $j("#XVII").css("background-color", "rgba(55, 139, 139, 0.3)");
+        cen17 = true;
+        showPlace();
+      } else {
+        $j("#XVII").css("background-color", "white");
+        cen17 = false;
+        showPlace();
+      }
+    });
+    $j("#XVIII").click(function () {
+      if ($j("#XVIII").css("background-color") == "rgb(255, 255, 255)") {
+        $j("#XVIII").css("background-color", "rgba(70, 148, 202, 0.3)");
+        cen18 = true;
+        showPlace();
+      } else {
+        $j("#XVIII").css("background-color", "white");
+        cen18 = false;
+        showPlace();
+      }
+    });
+    $j("#XIX").click(function () {
+      if ($j("#XIX").css("background-color") == "rgb(255, 255, 255)") {
+        $j("#XIX").css("background-color", "rgba(236, 119, 26, 0.3)");
+        cen19 = true;
+        showPlace();
+      } else {
+        $j("#XIX").css("background-color", "white");
+        cen19 = false;
+        showPlace();
+      }
+    });
+    $j("#XX").click(function () {
+      if ($j("#XX").css("background-color") == "rgb(255, 255, 255)") {
+        $j("#XX").css("background-color", "rgba(200, 72, 89, 0.3)");
+        cen20 = true;
+        showPlace();
+      } else {
+        $j("#XX").css("background-color", "white");
+        cen20 = false;
+        showPlace();
+      }
+    });
+
+    //filter1
+    document.getElementById('slideIcon1').addEventListener('click', function () {
+      if (this.style.width == '50px' || this.style.width == '') {
+        this.style.width = '320px';
+        $j("#slideIcon1").find(".styleIconsSlide").show();
+        $j("#slideIcon1").css("background-color", "#eed0a6");
+        $j("#icon1").css("background-color", "#eed0a6");
+        church = true;
+        showPlace();
+      } else {
+        $j("#slideIcon1").find(".styleIconsSlide").hide();
+        $j("#slideIcon1").css("background-color", "white");
+        $j("#icon1").css("background-color", "white");
+        this.style.width = '50px';
+        church = false;
+        showPlace();
+      }
+    }, false);
+    //=
+    //filter2
+    document.getElementById('slideIcon2').addEventListener('click', function () {
+      if (this.style.width == '50px' || this.style.width == '') {
+        this.style.width = '320px';
+        $j("#slideIcon2").find(".styleIconsSlide").show();
+        $j("#slideIcon2").css("background-color", "#eed0a6");
+        $j("#icon2").css("background-color", "#eed0a6");
+        monument = true;
+        showPlace();
+      } else {
+        $j("#slideIcon2").find(".styleIconsSlide").hide();
+        $j("#slideIcon2").css("background-color", "white");
+        $j("#icon2").css("background-color", "white");
+        this.style.width = '50px';
+        monument = false;
+        showPlace();
+      }
+    }, false);
+    //=
+    //filter3 - здания
+    document.getElementById('slideIcon3').addEventListener('click', function () {
+      if (this.style.width == '50px' || this.style.width == '') {
+        this.style.width = '320px';
+        $j("#slideIcon3").find(".styleIconsSlide").show();
+        $j("#slideIcon3").css("background-color", "#eed0a6");
+        $j("#icon3").css("background-color", "#eed0a6");
+
+        building = 'building';
+        showPlace();
+
+      } else {
+        $j("#slideIcon3").find(".styleIconsSlide").hide();
+        $j("#slideIcon3").css("background-color", "white");
+        $j("#icon3").css("background-color", "white");
+        this.style.width = '50px';
+        building = 'nobuilding';
+        showPlace();
+      }
+    }, false);
+
+    var churchVectorLayers = []; var churchs = [];
+    function setOptionReg() {
+
+      for (var i = 0; i < highlightedFeatures.length; i++) {
+        highlightedFeatures[i].setStyle(null);
+      }
+      $j('#boguchar').hide();
+      map.removeOverlay(boguchar);
+      // jTarget.css("cursor", "");
+      highlightedFeatures = [];
+
+      $j('#sel1').css("color", "black");
+      map.removeInteraction(select);
+      map.un('pointermove', pointermove);
+      showPlace();
+
+
+
+      $j.session.set('region', $j("select").find("option:selected").val());
+    }
+
+    //выбор района
+    $j('select').on('change', function (e) {
+      if ($j(this).find("option:selected")[0] == undefined) {
+        $j("#sel1").val("ВЫБЕРИТЕ РАЙОН");
+      }
+      //богучарский район
+      if ($j(this).find("option:selected")[0].id == 1) {
+        setCenter(40.563899, 49.853296);
+        setOptionReg();
+      }
+      //Аннинский район
+      if ($j(this).find("option:selected")[0].id == 2) {
+        setOptionReg();
+        setCenter(40.580565, 51.491544);
+      }
+      //боб район
+      if ($j(this).find("option:selected")[0].id == 3) {
+        setOptionReg();
+        setCenter(40.106577, 51.092992);
+      }
+      //борисоглебский
+      if ($j(this).find("option:selected")[0].id == 4) {
+        setOptionReg();
+        setCenter(42.364726, 51.428196);
+      }
+      if ($j(this).find("option:selected")[0].id == 5) {
+        setOptionReg();
+        setCenter(40.585053, 50.809307);
+      }
+      //v_mamon
+      if ($j(this).find("option:selected")[0].id == 6) {
+        setOptionReg();
+        setCenter(40.371385, 50.206949);
+      }
+      if ($j(this).find("option:selected")[0].id == 7) {
+        setOptionReg();
+        setCenter(39.986415, 51.870611);
+      }
+      //vorob
+      if ($j(this).find("option:selected")[0].id == 8) {
+        setOptionReg();
+        setCenter(41.004617, 50.676459);
+      }
+      //грибан
+      if ($j(this).find("option:selected")[0].id == 9) {
+        setOptionReg();
+        setCenter(41.963962, 51.452452);
+      }
+      //калач
+      if ($j(this).find("option:selected")[0].id == 10) {
+        setOptionReg();
+        setCenter(41.046403, 50.408011);
+      }
+      //каменский
+      if ($j(this).find("option:selected")[0].id == 11) {
+        setOptionReg();
+        setCenter(39.387682, 50.688128);
+      }
+      //контемировский
+      if ($j(this).find("option:selected")[0].id == 12) {
+        setOptionReg();
+        setCenter(39.835064, 49.768078);
+      }
+      //каширский
+      if ($j(this).find("option:selected")[0].id == 13) {
+        setOptionReg();
+        setCenter(39.486876, 51.376785);
+      }
+      //лиски
+      if ($j(this).find("option:selected")[0].id == 14) {
+        setOptionReg();
+        setCenter(39.541488, 51.010788);
+      }
+      if ($j(this).find("option:selected")[0].id == 15) {
+        setOptionReg();
+        setCenter(38.448700, 51.481046);
+      }
+      if ($j(this).find("option:selected")[0].id == 16) {
+        setOptionReg();
+        setCenter(39.569402, 51.626150);
+      }
+      if ($j(this).find("option:selected")[0].id == 17) {
+        setOptionReg();
+        setCenter(41.378458, 51.111195);
+      }
+      if ($j(this).find("option:selected")[0].id == 18) {
+        setOptionReg();
+        setCenter(39.242008, 50.327160);
+      }
+      if ($j(this).find("option:selected")[0].id == 19) {
+        setOptionReg();
+        setCenter(39.051738, 50.899249);
+      }
+      if ($j(this).find("option:selected")[0].id == 20) {
+        setOptionReg();
+        setCenter(40.236571, 50.525275);
+      }
+      if ($j(this).find("option:selected")[0].id == 21) {
+        setOptionReg();
+        setCenter(40.081596, 51.599701);
+      }
+      if ($j(this).find("option:selected")[0].id == 22) {
+        setOptionReg();
+        setCenter(41.004393, 50.116587);
+      }
+      if ($j(this).find("option:selected")[0].id == 23) {
+        setOptionReg();
+        setCenter(42.416476, 51.205492);
+      }
+      if ($j(this).find("option:selected")[0].id == 24) {
+        setOptionReg();
+        setCenter(39.660420, 50.397802);
+      }
+      //рамонь
+      if ($j(this).find("option:selected")[0].id == 25) {
+        setOptionReg();
+        setCenter(39.163246, 51.931300);
+      }
+      if ($j(this).find("option:selected")[0].id == 26) {
+        setOptionReg();
+        setCenter(38.677581, 51.165477);
+      }
+      if ($j(this).find("option:selected")[0].id == 27) {
+        setOptionReg();
+        setCenter(39.567835, 50.200125);
+      }
+      if ($j(this).find("option:selected")[0].id == 28) {
+        setOptionReg();
+        setCenter(38.698925, 51.832142);
+      }
+      if ($j(this).find("option:selected")[0].id == 29) {
+        setOptionReg();
+        setCenter(40.740083, 51.165129);
+      }
+      if ($j(this).find("option:selected")[0].id == 30) {
+        setOptionReg();
+        setCenter(41.486761, 51.648799);
+      }
+      if ($j(this).find("option:selected")[0].id == 31) {
+        setOptionReg();
+        setCenter(38.781243, 51.580717);
+      }
+      if ($j(this).find("option:selected")[0].id == 32) {
+        setOptionReg();
+        setCenter(40.699333, 51.773772);
+      }
+      if ($j(this).find("option:selected")[0].id == 33) {
+        setOptionReg();
+        setCenter(39.235785, 51.685543);
+      }
+      //не выбрано
+      if ($j(this).find("option:selected")[0].id == 'empty') {
+        $j('#sel1').css("color", "rgba(0, 0, 0, 0.5)");
+        regName = "";
+        $j.session.set('region', $j("select").find("option:selected").val());
+        $j('#boguchar').show();
+        map.on('pointermove', pointermove);
+        map.getView().setCenter(ol.proj.transform([40.050965, 50.322200], 'EPSG:4326', 'EPSG:3857'));
+        map.getView().setZoom(7.5);
+        for (var i = 0; i < churchVectorLayers.length; i++) {
+          map.removeLayer(churchVectorLayers[i]);
+        }
+
+      }
+
+    })
+
+    //======feature
+    var osmLayer = new ol.layer.Tile({
+      source: new ol.source.OSM(),
+      tileOptions: { crossOriginKeyword: 'anonymous' },
+      transitionEffect: null,
+      crossOrigin: null
+    });
+
+    osmLayer.on('postcompose', function (event) {
+      greyscale(event.context);
+    });
+
+    osmLayer.set('name', 'osm');
+
+
+
+    // Define style for geojsonLayer
+    var styles = {
+      'Polygon': [new ol.style.Style({
+        stroke: new ol.style.Stroke({
+          color: '#d5ab71',
+          width: 2
+        }),
+
+      })]
+    };
+
+    var stylesBoguchar = {
+      'Polygon': [new ol.style.Style({
+        stroke: new ol.style.Stroke({
+          color: 'white',
+          width: 2
+        }),
+        fill: new ol.style.Fill({
+          color: 'rgba(213,171,113,0.7)',
+        }),
+      })],
+    };
+
+    var styleFunction = function (feature, resolution) {
+      return styles[feature.getGeometry().getType()];
+    };
+
+    // Create geojsonLayer
+    var geojsonLayer = new ol.layer.Vector({
+      source: new ol.source.Vector({
+        url: 'js/geojson/VoronezhRegion.geojson',
+        format: new ol.format.GeoJSON(),
+        minResolution: 0,
+        maxResolution: 4,
+      }),
+      style: styleFunction
+    });
+
+    var select = null;
+
+    //Regions
+    var arrayRegion = [];
+
+    var nameRegion = ["bogucharRegion.geojson", "annaRegion.geojson", "bobrov.geojson", "borisog.geojson", "buturlin.geojson",
+      "verchemamon.geojson", "vercheham.geojson", "vorobey.geojson", "griban.geojson", "kalach.geojson",
+      "kamen.geojson", "kantemir.geojson", "kashir.geojson", "liski.geojson", "nishedev.geojson",
+      "novousman.geojson", "olchovat.geojson", "ostrogor.geojson", "pavlovsk.geojson", "panin.geojson",
+      "petropalovsk.geojson", "povoren.geojson", "podgoren.geojson", "ramon.geojson", "repiev.geojson",
+      "rossosh.geojson", "semiluki.geojson", "talov.geojson", "ternov.geojson", "chochol.geojson",
+      "ertil.geojson", "novochoper.geojson", "voronezh.geojson"];
+
+    var nameLayers = ["Богучарский", "Аннинский", "Бобровский", "Борисоглебский", "Бутурлиновский",
+      "Верхнемамонский", "Верхнехавский", "Воробьевский", "Грибановский", "Калачеевский",
+      "Каменский", "Кантемировский", "Каширский", "Лискинский", "Нижнедевицкий",
+      "Новоусманский", "Ольховатский", "Острогожский", "Павловский", "Панинский",
+      "Петропавловский", "Поворинский", "Подгоренский", "Рамонский", "Репьёвский",
+      "Россошанский", "Семилукский", "Таловский", "Терновский", "Хохольский",
+      "Эртильский", "Новохоперский", "Воронеж"];
+
+    arrayRegion.push(osmLayer);
+    arrayRegion.push(geojsonLayer);
+
+    for (var i = 0; i < nameRegion.length; i++) {
+      var styleFunctionReg = function (feature, resolution) {
+        return stylesBoguchar[feature.getGeometry().getType()];
+      };
+
+      var regionsLayer = new ol.layer.Vector({
+        source: new ol.source.Vector({
+          url: 'js/geojson/' + nameRegion[i],
+          format: new ol.format.GeoJSON({
+          }),
+          minResolution: 0,
+          maxResolution: 4,
+        }),
+        style: styleFunctionReg
+      });
+
+      regionsLayer.setProperties({ 'name': nameLayers[i], 'position': 'reg' });
+
+      arrayRegion.push(regionsLayer);
+
+    }
+
+    var highlightedFeatures = [],
+      selectStyle = new ol.style.Style({
+        stroke: new ol.style.Stroke({
+          color: 'white',
+          width: 2
+        }),
+        fill: new ol.style.Fill({
+          color: '#d5ab71'
+        }),
+
+      });
+
+    function setCenter(lat, lon) {
+      map.getView().setCenter(ol.proj.transform([lat, lon], 'EPSG:4326', 'EPSG:3857'));
+      map.getView().setZoom(10);
+    }
+
+    var map = new ol.Map({
+      target: 'map',
+      layers: arrayRegion,
+      view: new ol.View({
+        center: ol.proj.fromLonLat([40.050965, 50.322200]),
+        zoom: 7.5,
+      }),
+      tileOptions: { crossOriginKeyword: 'anonymous' },
+      transitionEffect: null,
+      crossOrigin: null
+    });
+
+    var region = null;
+    map.on('pointermove', pointermove);
+    var prevBoguchar = null;
+
+    function pointermove(e) {
+      var target = map.getTarget(),
+      jTarget = typeof target === "string" ? $j("#" + target) : $j(target);
+      map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
+
+        if (layer.get('name') != undefined && region != layer.get('name')) {
+
+          for (var i = 0; i < highlightedFeatures.length; i++) {
+            highlightedFeatures[i].setStyle(null);
+          }
+          map.removeOverlay(boguchar);
+          jTarget.css("cursor", "");
+          highlightedFeatures = [];
+
+          region = layer.get('name');
+          $j("#nameReg").html(layer.get('name'));
+          var pos = e.coordinate;
+
+          var regName = new ol.Overlay({
+            position: pos,
+            positioning: 'center-center',
+            element: document.getElementById('nameReg'),
+            stopEvent: false,
+          });
+          map.addOverlay(regName);
+
+          // Boguchar label
+          var boguchar = new ol.Overlay({
+            position: pos,
+            element: document.getElementById('boguchar')
+          });      
+
+          feature.setStyle(selectStyle);
+          highlightedFeatures.push(feature);
+          boguchar.setPosition(pos);  //e.coordinate
+          map.addOverlay(boguchar);
+          jTarget.css("cursor", "pointer");
+        }
+      });
+
+    }
+
+    $j("#sel1").val($j.session.get("region")).trigger('change');
+
+    function getBuildingIcon(type) {
+      if (type == 1) { return "icon2.png"; }
+      if (type == 2) { return "icon3.png"; }
+      if (type == 3) { return "icon1.png"; }
+    }
+
+    function getBuildingType(type) {
+      if (type == 1) { return "church"; }
+      if (type == 2) { return "monument"; }
+      if (type == 3) { return "building"; }
+    }
+
+    function createPlace() {
+      var coords = []; var icons = []; var names = []; var type = [];
+      var time = []; var reg = []; var pic = []; var nameFiles = [];
+      var arrayObjects = data;
+
+      for (var i = 0; i < arrayObjects.length; i++) {
+        var str = arrayObjects[i].coord.split(' ');
+        coords.push(parseFloat(str[0]));
+        coords.push(parseFloat(str[1]));
+        icons.push(getBuildingIcon(arrayObjects[i].type_building));
+        names.push(arrayObjects[i].name);
+        type.push(getBuildingType(arrayObjects[i].type_building));
+        time.push("cen" + arrayObjects[i].century);
+        reg.push(arrayObjects[i].id_region);
+        pic.push(arrayObjects[i].pic_name);
+        nameFiles.push(arrayObjects[i].name_file);
+      }
+      j = 0;
+      for (var i = 0; i < names.length; i++) {
+        var church = new ol.Feature({
+          geometry: new ol.geom.Point(
+            ol.proj.fromLonLat([coords[j], coords[j + 1]])
+          ),
+        });
+        j = j + 2;
+
+        church.setStyle(new ol.style.Style({
+          image: new ol.style.Icon(({
+            src: "js/icons/" + icons[i]
+          }))
+        }));
+
+        church.setProperties({ 'name': names[i], 'type': type[i], 'time': time[i], 'reg': reg[i], 'pic': pic[i], 'name_file': nameFiles[i] });
+        vectorSource = new ol.source.Vector({
+          features: [church]
+        });
+        churchs.push(church);
+
+        churchVectorLayer = new ol.layer.Vector({
+          source: vectorSource,
+        });
+
+        churchVectorLayers.push(churchVectorLayer);
+      }
+    }
+    createPlace();
+
+    function showPlace() {
+
+      if (churchs.length == 0) {
+        createPlace();
+      }
+      if ($j("select").find("option:selected")[0].id == 'empty') {
+        return null;
+      }
+      for (var i = 0; i < churchVectorLayers.length; i++) {
+        map.removeLayer(churchVectorLayers[i]);
+      }
+
+      for (var i = 0; i < churchs.length; i++) {
+
+        if (churchs[i].get('reg') == $j("select").find("option:selected")[0].id) {
+
+          if (building == churchs[i].get('type') && churchs[i].get('type') == 'building') {
+
+            checkCentury(churchVectorLayers[i], churchs[i]);
+          }
+          if (church && churchs[i].get('type') == 'church') {
+
+            checkCentury(churchVectorLayers[i], churchs[i]);
+          }
+          if (monument && churchs[i].get('type') == 'monument') {
+            checkCentury(churchVectorLayers[i], churchs[i]);
+          }
+        }
+      }
+    }
+
+    function checkCentury(churchVectorLayers, churchs) {
+      if (cen16 && churchs.get('time') == 'cen16') {
+        map.addLayer(churchVectorLayers);
+      }
+      if (cen17 && churchs.get('time') == 'cen17') {
+        map.addLayer(churchVectorLayers);
+      }
+      if (cen18 && churchs.get('time') == 'cen18') {
+        map.addLayer(churchVectorLayers);
+      }
+      if (cen19 && churchs.get('time') == 'cen19') {
+        map.addLayer(churchVectorLayers);
+      }
+      if (cen20 && churchs.get('time') == 'cen20') {
+        map.addLayer(churchVectorLayers);
+      }
+    }
+
+    var popup = new ol.Overlay({
+      element: document.getElementById('popup')
+    });
+
+    map.addOverlay(popup);
+
+    var regName = null;
+
+    map.getView().on('change:resolution', function (evt) {
+      if (map.getView().getZoom() < 7.6) {
+        $j("#sel1").val("ВЫБЕРИТЕ РАЙОН").trigger('change');
+      }
+
+    });
+
+    function isInt(x) {
+      var y = parseInt(x, 10);
+      return !isNaN(y) && x == y && x.toString() == y.toString();
+    }
+
+    map.on('click', function (evt) {
+      var element = popup.getElement();
+      var coordinate = evt.coordinate;
+      $j(element).popover('destroy');
+      map.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
+        if (layer.get('name') != undefined && regName != layer.get('name')) {
+          regName = layer.get('name');
+          var target = map.getTarget(),
+            jTarget = typeof target === "string" ? $j("#" + target) : $j(target);
+          jTarget.css("cursor", "");
+
+          if (layer.get('name') != 'Воронеж') {
+            $j("#sel1").val(layer.get('name').toUpperCase() + " РАЙОН").trigger('change');
+          } else {
+            $j("#sel1").val(layer.get('name').toUpperCase()).trigger('change');
+          }
+        }
+        //воронеж
+        var content = "";
+        if (feature.get('reg') == 33) {
+          //число
+          if (isInt(feature.get('name_file'))) {
+
+            content = '<p><a href="places_page/mainTemplate.php?q=' + feature.get('name_file') + ' "><img src="js/picture_places/' + feature.get('pic') + '" width="256" height="128" ></a>' +
+              '</p><p style="margin-left:25px;" class="styleTextTooltip">' + feature.get('name') + '</p>';
+          } else {
+            // не число
+            content = '<p><a href="' + feature.get('name_file') + ' "><img src="js/picture_places/' + feature.get('pic') + '" width="256" height="128" ></a>' +
+              '</p><p style="margin-left:25px;" class="styleTextTooltip">' + feature.get('name') + '</p>';
+          }
+
+          //	feature.get('name_file') - ссылка
+          popup.setPosition(coordinate);
+          $j(element).popover({
+            placement: 'top',
+            animation: false,
+            html: true,
+            content: content
+          });
+          $j(element).popover('show');
+        }
+
+
+        //
+        if (feature.get('name') != 'Земская управа' && feature.get('time') != undefined) {
+
+          if (isInt(feature.get('name_file'))) {
+            content = '<p><a href="places_page/mainTemplate.php?q=' + feature.get('name_file') + ' "><img src="js/picture_places/' + feature.get('pic') + '" width="256" height="128" ></a>' +
+              '</p><p style="margin-left:25px;" class="styleTextTooltip">' + feature.get('name') + '</p>';
+          } else {
+            content = '<p><a href="places_page/' + feature.get('name_file') + '"><img src="js/picture_places/' + feature.get('pic') + '" width="256" height="128" ></a>' +
+              '</p><p style="margin-left:25px;" class="styleTextTooltip">' + feature.get('name') + '</p>';
+          }
+
+          popup.setPosition(coordinate);
+          $j(element).popover({
+            placement: 'top',
+            animation: false,
+            html: true,
+            content: content
+          });
+          $j(element).popover('show');
+        }
+
+
+        if (feature.get('name') == 'Земская управа') {
+          popup.setPosition(coordinate);
+          $j(element).popover({
+            placement: 'top',
+            animation: false,
+            html: true,
+            content: '<p><a href="church1.php"><img src="js/picture_places/church1.png"   width="256" height="128" ></a>' +
+              '</p><p style="margin-left:25px;" class="styleTextTooltip">Земская управа</p>'
+          });
+          $j(element).popover('show');
+
+        }
+      });
+
+    })
+
+    function greyscale(context) {
+      var canvas = context.canvas;
+      var width = canvas.width;
+      var height = canvas.height;
+      var imageData = context.getImageData(0, 0, width, height, { willReadFrequently: true });
+      var data = imageData.data;
+      for (i = 0; i < data.length; i += 4) {
+        var r = data[i];
+        var g = data[i + 1];
+        var b = data[i + 2];
+        var v = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        if (v === 0.0)
+          v = 255.0;
+        data[i + 0] = v;
+        data[i + 1] = v;
+        data[i + 2] = v;
+        data[i + 3] = 255;
+      }
+      context.putImageData(imageData, 0, 0);
+    }
+  </script>
+
+</body>
+
+</html>
