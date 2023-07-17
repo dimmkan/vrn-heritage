@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="js/jquery-3.0.0.min.js"> </script>
   <script src="js/jquery.session.js"> </script>
   <script type="text/javascript" src="js/data.js"></script>
@@ -109,7 +108,6 @@
       padding-top: 0px;
       padding-bottom: 0px;
     }
-
 
     .styleTextTooltip {
       font-family: Prata;
@@ -340,8 +338,6 @@
       color: #000000;
     }
 
-
-
     .stTitle3 {
       font-family: PT Sans Caption;
       font-size: 14px;
@@ -353,12 +349,10 @@
       color: #d5ab71;
     }
 
-
     .number {
       font-family: Prata;
       font-size: 20px;
     }
-
 
     .mainTitle {
       font-family: Prata;
@@ -654,8 +648,6 @@
       color: #000000;
     }
 
-
-
     .stTitle3 {
       font-family: PT Sans Caption;
       font-size: 14px;
@@ -667,12 +659,10 @@
       color: #d5ab71;
     }
 
-
     #number {
       font-family: Prata;
       font-size: 20px;
     }
-
 
     .mainTitle {
       font-family: Prata;
@@ -757,6 +747,11 @@
       border-color: rgba(213, 171, 113, .6);
       outline-offset: -25px;
     }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 20%);
+    }
   </style>
   <title></title>
 </head>
@@ -830,10 +825,9 @@
     <span class="styleIconsSlide">Достопримечательные места</span>
   </div>
 
-  <div class="col-md-12">
-    <div class="row " style="background-color:white; position:absolute;width:100%; bottom: 5%;">
-      <div id="XVI" class="col-md-2 timeLineSt centuryTimeLine"
-        style="border-bottom: 4px solid #7e9d5f; background-color:rgba(126, 157, 95, 0.3);">
+    <div class="grid" style="background-color:white; position:absolute;width:100%; bottom: 5%;">
+      <div id="XVI" class="timeLineSt centuryTimeLine"
+        style="border-bottom: 4px solid #7e9d5f; background-color:rgba(126, 157, 95, 0.3); width:100%;">
         XVI <div class="smallStDiv"> </div>
         <div class="smallStDiv"> </div>
         <div class="smallStDiv"> </div>
@@ -841,8 +835,8 @@
         <p class="centuryLetterTimeLine">ВЕК</p>
       </div>
 
-      <div id="XVII" class="col-md-2 timeLineSt centuryTimeLine"
-        style="border-bottom: 4px solid #378b8b; background-color:rgba(55, 139, 139, 0.3)">
+      <div id="XVII" class="timeLineSt centuryTimeLine"
+        style="border-bottom: 4px solid #378b8b; background-color:rgba(55, 139, 139, 0.3); width:100%;">
         XVII <div class="smallStDiv2"> </div>
         <div class="smallStDiv2"> </div>
         <div class="smallStDiv2"> </div>
@@ -850,8 +844,8 @@
         <p class="centuryLetterTimeLine">ВЕК</p>
       </div>
 
-      <div id="XVIII" class="col-md-2 timeLineSt centuryTimeLine"
-        style="border-bottom: 4px solid #4694ca;background-color:rgba(70, 148, 202, 0.3)">
+      <div id="XVIII" class="timeLineSt centuryTimeLine"
+        style="border-bottom: 4px solid #4694ca;background-color:rgba(70, 148, 202, 0.3); width:100%;">
         XVIII <div class="smallStDiv3"> </div>
         <div class="smallStDiv3"> </div>
         <div class="smallStDiv3"> </div>
@@ -859,8 +853,8 @@
         <p class="centuryLetterTimeLine">ВЕК</p>
       </div>
 
-      <div id="XIX" class="col-md-2 timeLineSt centuryTimeLine"
-        style="border-bottom: 4px solid #ec771a;background-color:rgba(236, 119, 26, 0.3)">
+      <div id="XIX" class="timeLineSt centuryTimeLine"
+        style="border-bottom: 4px solid #ec771a;background-color:rgba(236, 119, 26, 0.3); width:100%;">
         XIX <div class="smallStDiv4"> </div>
         <div class="smallStDiv4"> </div>
         <div class="smallStDiv4"> </div>
@@ -868,8 +862,8 @@
         <p class="centuryLetterTimeLine">ВЕК</p>
       </div>
 
-      <div id="XX" class="col-md-2 timeLineSt centuryTimeLine"
-        style="border-bottom: 4px solid #c84859;background-color:rgba(200, 72, 89, 0.3)">
+      <div id="XX" class="timeLineSt centuryTimeLine"
+        style="border-bottom: 4px solid #c84859;background-color:rgba(200, 72, 89, 0.3); width:100%;">
         XX <div class="smallStDiv5"> </div>
         <div class="smallStDiv5"> </div>
         <div class="smallStDiv5"> </div>
@@ -877,7 +871,7 @@
         <p class="centuryLetterTimeLine">ВЕК</p>
       </div>
     </div>
-  </div>
+
   <script type="text/javascript">
 
     //select 
@@ -1325,7 +1319,7 @@
 
     function pointermove(e) {
       var target = map.getTarget(),
-      jTarget = typeof target === "string" ? $j("#" + target) : $j(target);
+        jTarget = typeof target === "string" ? $j("#" + target) : $j(target);
       map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
 
         if (layer.get('name') != undefined && region != layer.get('name')) {
@@ -1353,7 +1347,7 @@
           var boguchar = new ol.Overlay({
             position: pos,
             element: document.getElementById('boguchar')
-          });      
+          });
 
           feature.setStyle(selectStyle);
           highlightedFeatures.push(feature);
