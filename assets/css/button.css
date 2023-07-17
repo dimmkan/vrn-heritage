@@ -1,0 +1,79 @@
+/*
+
+<button class="details-btn">
+    <span class="details-btn_bg"></span>
+    LABEL
+</button>
+
+ */
+
+.details-btn {
+    width: 230px;
+    height: 56px;
+    padding: 17px;
+
+    color: #d5ab71;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 2;
+    letter-spacing: 0.6px;
+
+    background-color: transparent;
+
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+}
+
+.details-btn_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: 0;
+    height: 56px;
+
+    background-color: #d5ab71;
+    z-index: -2;
+}
+
+.details-btn::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 50%;
+    height: 56px;
+
+    background-color: rgba(213, 171, 113, 0.5);
+    border-left: 5px solid #d5ab71;
+    box-sizing: border-box;
+}
+
+.details-btn:after {
+    content: '\2192';
+
+    margin-left: 10px;
+}
+
+.details-btn:hover {
+    color: #000;
+    transition: color 0.5s;
+}
+
+.details-btn:hover:before {
+    width: 100%;
+    transition: width 0.5s;
+}
+
+.details-btn:hover > .details-btn_bg {
+    width: 100%;
+    transition: width 0.7s;
+}
