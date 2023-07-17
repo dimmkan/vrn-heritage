@@ -47,5 +47,11 @@
 }
 
 .navigation-menu.white {
+    background-color: #fff;
 
+    border-bottom: 1px solid rgb(0,0,0, 0.07);
+}
+
+.navigation-menu.white li > a {
+    color: #000;
 }
