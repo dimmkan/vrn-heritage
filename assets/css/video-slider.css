@@ -123,3 +123,11 @@
     float: left;
     margin: 0 4px -11px 0;
 }
+
+.video-slider .details-btn {
+    position: absolute;
+    top: 65%;
+    left: 28%;
+
+    z-index: 100;
+}
