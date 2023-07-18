@@ -1,7 +1,7 @@
 .container {
   /* background-color: aqua; */
   padding-top: 155px;
-  margin: 0 285px;
+  margin: 0 290px;
   display: flex;
   flex-direction: column;
   height: fit-content;
