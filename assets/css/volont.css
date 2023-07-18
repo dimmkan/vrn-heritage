@@ -1,5 +1,6 @@
 .container {
   /* background-color: aqua; */
+  padding-top: 155px;
   margin: 0 285px;
   display: flex;
   flex-direction: column;
@@ -50,6 +51,7 @@
   color: #d5ab71;
 }
 .content__title {
+  margin-bottom: 24px;
   font-family: Prata;
   font-size: 24px;
   font-weight: normal;
