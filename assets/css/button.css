@@ -8,7 +8,9 @@
  */
 
 .details-btn {
+    position: relative;
     height: 56px;
+    max-width: fit-content;
     padding: 17px;
 
     color: #d5ab71;
