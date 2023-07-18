@@ -1,7 +1,13 @@
 .navigation-menu {
+    position: fixed;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 30px;
+
     display: flex;
 
     background-color: #000;
+    z-index: 10;
 }
 
 .navigation-menu__inner-content {
@@ -9,12 +15,12 @@
     flex-direction: row;
     align-items: center;
 
-    margin: 0 auto;
+    margin-left: 150px;
 }
 
 .navigation-menu ul {
     display: flex;
-    gap: 20px;
+    gap: 40px;
 
     list-style: none;
 }
@@ -38,4 +44,14 @@
 .navigation-menu li > a:hover {
     color: #d5ab71;
     text-decoration: none !important;
+}
+
+.navigation-menu.white {
+    background-color: #fff;
+
+    border-bottom: 1px solid rgb(0,0,0, 0.07);
+}
+
+.navigation-menu.white li > a {
+    color: #000;
 }

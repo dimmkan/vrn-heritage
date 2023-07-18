@@ -5,9 +5,14 @@
     <title>АУК ВО ГИИКН</title>
     <link rel="stylesheet" href="assets/css/common.css" type="text/css">
     <link rel="stylesheet" href="assets/css/header.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/footer.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/video-slider.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/button.css" type="text/css">
+    <!--fullpage-->
+    <link rel="stylesheet" type="text/css" href="fullpage/fullpage.css"/>
+    <script type="text/javascript" src="fullpage/fullpage.js"></script>
 </head>
 <body>
-
 <!-- HEADER -->
 <nav class="navigation-menu">
     <div class="navigation-menu__inner-content">
@@ -25,6 +30,88 @@
         </ul>
     </div>
 </nav>
+<div id="fullpage">
+    <!--VIDEO-->
+    <div class="video-slider section">
+        <div class="blackout"></div>
+        <video autoplay muted loop src="assets/video/outputvideo-cutter-js.com-1.mp4"></video>
+        <div class="borders"></div>
+        <span class="title">Архитектура</span>
+        <h4 class="big-title">Здание гостиницы "Бристоль"</h4>
+        <p class="caption">Четырёхэтажное здание гостиницы с рестораном и магазинами на первом этаже было построено в
+            1910 году по проекту московского инженера М. Фурманова. При строительстве автор предусмотрел использование
+            практически всех новинок в области возведения многоэтажных зданий </p>
+        <a class="details-btn" href="#">
+            <span class="details-btn_bg"></span>
+            Узнать подробности
+        </a>
+
+        <div class="carousel-caption"></div>
+    </div>
+
+    <!--EXCURSIONS-->
+    <div class="excursions section">
+        <div class="header-row">
+            <h4>Виртуальные экскурсии</h4>
+        </div>
+        <div class="slides">
+            <div class="slide">
+                <img src="" alt>
+                <div class="title">
+                    Историческая
+                </div>
+                <div class="big-title">
+                    Виртуальная экскурсия
+                </div>
+                <div class="caption">
+                    Мультимедиа-гид с технологией дополненной реальности
+                    «Объекты культурного наследия Воронежской области»,
+                    по историческому центру города Воронежа по проспекту Революции до площади Ленина
+                </div>
+                <a class="details-btn" href="#">
+                    <span class="details-btn_bg"></span>
+                    подробнее
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--HISTORY-->
+    <div class="section"></div>
+
+    <!--EVENTS-->
+    <div class="section"></div>
+
+    <!--ABOUT-->
+    <div class="section"></div>
+</div>
+
+<!--NEWS-->
+<div></div>
+
+<!--PARTNERS-->
+<div></div>
+
+<!--FOOTER-->
+<div></div>
+
+<script>
+    new fullpage('#fullpage', {
+        autoScrolling: true,
+        scrollHorizontally: true,
+        beforeLeave: function (origin, destination, direction, trigger) {
+            const nav = document.querySelectorAll('.navigation-menu')[0];
+            if (nav) {
+                if (origin.index === 0) {
+                    nav.classList.add('white');
+                }
+                if (destination.index === 0) {
+                    nav.classList.remove('white');
+                }
+            }
+        },
+    });
+</script>
 
 </body>
 </html>
