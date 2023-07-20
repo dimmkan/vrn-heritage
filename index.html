@@ -38,7 +38,7 @@
     <!--VIDEO-->
     <div class="section" style="position: relative">
         <div class="video-slider">
-            <div style="position: relative">
+            <div class="video-slider_slide">
                 <div class="blackout"></div>
                 <video autoplay muted loop src="assets/video/outputvideo-cutter-js.com_.mp4"></video>
                 <div class="borders"></div>
@@ -94,25 +94,96 @@
             <h4>Виртуальные экскурсии</h4>
             <div class="carousel-controls"></div>
         </div>
-        <div class="carousel">
-            <div class="item">
-                <div class="border"></div>
-                <img src="" alt>
-                <div class="title">
-                    Историческая
+        <div class="excursions-slider">
+            <div class="excursions-slider_slide">
+                <div class="img-wrp">
+                    <img src="assets/img/spartak.jpg" alt="">
                 </div>
-                <div class="big-title">
-                    Виртуальная экскурсия
+                <div class="item">
+                    <div class="border"></div>
+                    <div class="title">
+                        Историческая
+                    </div>
+                    <div class="big-title">
+                        Виртуальная экскурсия
+                    </div>
+                    <div class="caption">
+                        Мультимедиа-гид с технологией дополненной реальности
+                        «Объекты культурного наследия Воронежской области»,
+                        по историческому центру города Воронежа по проспекту Революции до площади Ленина
+                    </div>
+                    <a class="details-btn" href="#">
+                        <span class="details-btn_bg"></span>
+                        подробнее
+                    </a>
                 </div>
-                <div class="caption">
-                    Мультимедиа-гид с технологией дополненной реальности
-                    «Объекты культурного наследия Воронежской области»,
-                    по историческому центру города Воронежа по проспекту Революции до площади Ленина
+            </div>
+            <div class="excursions-slider_slide">
+                <div class="img-wrp">
+                    <img src="assets/img/moroz.jpg" alt="">
                 </div>
-                <a class="details-btn" href="#">
-                    <span class="details-btn_bg"></span>
-                    подробнее
-                </a>
+                <div class="item">
+                    <div class="border"></div>
+                    <div class="title">
+                        Историческая
+                    </div>
+                    <div class="big-title">
+                        Виртуальная экскурсия
+                    </div>
+                    <div class="caption">
+                        Мультимедиа-гид с технологией дополненной реальности
+                        по историческому центру города Воронежа по улицам Карла Маркса,
+                        Фридриха Энгельса, Никитинской, Средне-Московской
+                    </div>
+                    <a class="details-btn" href="#">
+                        <span class="details-btn_bg"></span>
+                        подробнее
+                    </a>
+                </div>
+            </div>
+            <div class="excursions-slider_slide">
+                <div class="img-wrp">
+                    <img src="assets/img/2012preob.jpg" alt="">
+                </div>
+                <div class="item">
+                    <div class="border"></div>
+                    <div class="title">
+                        Историческая
+                    </div>
+                    <div class="big-title">
+                        Виртуальная экскурсия
+                    </div>
+                    <div class="caption">
+                        Мультимедиа-гид с технологией дополненной реальности
+                        «Объекты культурного наследия Воронежской области», по историческому центру города Острогожска
+                    </div>
+                    <a class="details-btn" href="#">
+                        <span class="details-btn_bg"></span>
+                        подробнее
+                    </a>
+                </div>
+            </div>
+            <div class="excursions-slider_slide">
+                <div class="img-wrp">
+                    <img src="assets/img/unCity.jpg" alt="">
+                </div>
+                <div class="item">
+                    <div class="border"></div>
+                    <div class="title">
+                        Историческая
+                    </div>
+                    <div class="big-title">
+                        Неизвестный город
+                    </div>
+                    <div class="caption">
+                        Интернет-канал «TV Губерния» и Управление по
+                        охране объектов культурного наследия Воронежской области...
+                    </div>
+                    <a class="details-btn" href="#">
+                        <span class="details-btn_bg"></span>
+                        подробнее
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -158,6 +229,7 @@
         autoScrolling: true,
         scrollHorizontally: true,
         scrollBar: true,
+        scrollOverflow: false,
         beforeLeave: function (origin, destination, direction, trigger) {
             const nav = document.querySelectorAll('.navigation-menu')[0];
             if (nav) {
@@ -179,6 +251,18 @@
             nextArrow: '<div class="slider-next"></div>',
             prevArrow: '<div class="slider-prev"></div>'
         });
+
+        $('.excursions-slider').slick({
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: false,
+            variableWidth: true,
+            arrows: true,
+            nextArrow: '<div class="slider-next"></div>',
+            prevArrow: '<div class="slider-prev"></div>',
+            appendArrows: $('.header-row')
+        });
+        $('html').style.overflow = 'hidden';
     });
 </script>
 
