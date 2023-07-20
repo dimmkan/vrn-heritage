@@ -1,8 +1,7 @@
 .navigation-menu {
     position: fixed;
     width: 100%;
-    padding-top: 5px;
-    padding-bottom: 30px;
+    padding: 5px 0;
 
     display: flex;
 

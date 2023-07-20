@@ -1,0 +1,42 @@
+.excursions {
+    padding-left: 20%;
+}
+
+.excursions .header-row h4 {
+    margin: 0;
+
+    font-size: 48px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 2.4px;
+    text-align: left;
+    color: #000000;
+}
+
+.excursions .item {
+    position: relative;
+    height: 88%;
+    width: 90%;
+    min-height: 400px;
+
+    padding: 10px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-bottom: 2px solid transparent;
+    border-image: 1 linear-gradient(90deg, rgba(213,171,113, .6) 20%, rgba(213,171,113, .6) 40%, rgba(213,171,113, 0) 40%, rgba(213,171,113, 0) 80%, rgba(213,171,113, .6) 80%, rgba(213,171,113, .6) 100% );
+    outline-offset: -25px;
+}
+
+.excursions .item .border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top: 2px solid rgba(213,171,113, .6);
+    border-left: 2px solid rgba(213,171,113, .6);
+    border-right: 2px solid rgba(213,171,113, .6);
+}
