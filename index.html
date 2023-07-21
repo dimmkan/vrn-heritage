@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <title>АУК ВО ГИИКН</title>
     <link rel="stylesheet" href="assets/css/common.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/button.css" type="text/css">
     <link rel="stylesheet" href="assets/css/header.css" type="text/css">
     <link rel="stylesheet" href="assets/css/footer.css" type="text/css">
     <link rel="stylesheet" href="assets/css/video-slider.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/button.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/excursions.css" type="text/css">
     <!--fullpage-->
     <link rel="stylesheet" type="text/css" href="fullpage/fullpage.css"/>
     <script type="text/javascript" src="fullpage/fullpage.js"></script>
+    <!--slick-->
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/slick/slick/slick.js"></script>
 </head>
 <body>
 <!-- HEADER -->
@@ -20,7 +24,7 @@
             <img src="assets/img/header-logo.png" alt=" "/>
         </a>
         <ul>
-            <li><a href="/map.html">архитектура</a></li>
+            <li><a href="map.html">архитектура</a></li>
             <li><a href="#">археология</a></li>
             <li><a href="#">экскурсии</a></li>
             <li><a href="/volont.html">волонтерство</a></li>
@@ -32,73 +36,200 @@
 </nav>
 <div id="fullpage">
     <!--VIDEO-->
-    <div class="video-slider section">
-        <div class="blackout"></div>
-        <video autoplay muted loop src="assets/video/outputvideo-cutter-js.com-1.mp4"></video>
-        <div class="borders"></div>
-        <span class="title">Архитектура</span>
-        <h4 class="big-title">Здание гостиницы "Бристоль"</h4>
-        <p class="caption">Четырёхэтажное здание гостиницы с рестораном и магазинами на первом этаже было построено в
-            1910 году по проекту московского инженера М. Фурманова. При строительстве автор предусмотрел использование
-            практически всех новинок в области возведения многоэтажных зданий </p>
-        <a class="details-btn" href="#">
-            <span class="details-btn_bg"></span>
-            Узнать подробности
-        </a>
-
-        <div class="carousel-caption"></div>
+    <div class="section" style="position: relative">
+        <div class="video-slider">
+            <div class="video-slider_slide">
+                <div class="blackout"></div>
+                <video autoplay muted loop src="assets/video/outputvideo-cutter-js.com_.mp4"></video>
+                <div class="borders"></div>
+                <span class="title">Архитектура</span>
+                <h4 class="big-title">Здание гостиницы "Бристоль"</h4>
+                <p class="caption">Четырёхэтажное здание гостиницы с рестораном и магазинами на первом этаже было
+                    построено
+                    в
+                    1910 году по проекту московского инженера М. Фурманова. При строительстве автор предусмотрел
+                    использование
+                    практически всех новинок в области возведения многоэтажных зданий </p>
+                <a class="details-btn" href="#">
+                    <span class="details-btn_bg"></span>
+                    Узнать подробности
+                </a>
+            </div>
+            <div style="position: relative">
+                <div class="blackout"></div>
+                <video autoplay muted loop src="assets/video/outputvideo-cutter-js.com-1.mp4"></video>
+                <div class="borders"></div>
+                <span class="title">Архитектура</span>
+                <h4 class="big-title">Комплекс Ольденбургских</h4>
+                <p class="caption">Усадебный комплекс конца XIX века в посёлке городского типа Рамонь Воронежской
+                    области. Редкий для русской глубинки памятник кирпичной неоготики. Принадлежал русской ветви
+                    Ольденбургского дома. </p>
+                <a class="details-btn" href="#">
+                    <span class="details-btn_bg"></span>
+                    Узнать подробности
+                </a>
+            </div>
+            <div style="position: relative">
+                <div class="blackout"></div>
+                <video autoplay muted loop src="assets/video/Дивногорье.mp4"></video>
+                <div class="borders"></div>
+                <span class="title">Архитектура</span>
+                <h4 class="big-title">Комплекс Успенского Дивногорского монастыря</h4>
+                <p class="caption">Пещерный мужской монастырь Воронежской епархии Русской православной церкви, основан
+                    около 1650 года монахами, пришедшими из Гетманщины вместе с полком черкасов (малороссийских
+                    казаков), расположен в посёлке Дивногорский монастырь Лискинского района Воронежской области,
+                    недалеко от села Селявное. </p>
+                <a class="details-btn" href="#">
+                    <span class="details-btn_bg"></span>
+                    Узнать подробности
+                </a>
+            </div>
+        </div>
+        <!--        <div class="carousel-caption"></div>-->
     </div>
 
     <!--EXCURSIONS-->
     <div class="excursions section">
         <div class="header-row">
             <h4>Виртуальные экскурсии</h4>
+            <div class="carousel-controls"></div>
         </div>
-        <div class="slides">
-            <div class="slide">
-                <img src="" alt>
-                <div class="title">
-                    Историческая
+        <div class="excursions-slider">
+            <div class="excursions-slider_slide">
+                <div class="img-wrp">
+                    <img src="assets/img/spartak.jpg" alt="">
                 </div>
-                <div class="big-title">
-                    Виртуальная экскурсия
+                <div class="item">
+                    <div class="border"></div>
+                    <div class="title">
+                        Историческая
+                    </div>
+                    <div class="big-title">
+                        Виртуальная экскурсия
+                    </div>
+                    <div class="caption">
+                        Мультимедиа-гид с технологией дополненной реальности
+                        «Объекты культурного наследия Воронежской области»,
+                        по историческому центру города Воронежа по проспекту Революции до площади Ленина
+                    </div>
+                    <a class="details-btn" href="#">
+                        <span class="details-btn_bg"></span>
+                        подробнее
+                    </a>
                 </div>
-                <div class="caption">
-                    Мультимедиа-гид с технологией дополненной реальности
-                    «Объекты культурного наследия Воронежской области»,
-                    по историческому центру города Воронежа по проспекту Революции до площади Ленина
+            </div>
+            <div class="excursions-slider_slide">
+                <div class="img-wrp">
+                    <img src="assets/img/moroz.jpg" alt="">
                 </div>
-                <a class="details-btn" href="#">
-                    <span class="details-btn_bg"></span>
-                    подробнее
-                </a>
+                <div class="item">
+                    <div class="border"></div>
+                    <div class="title">
+                        Историческая
+                    </div>
+                    <div class="big-title">
+                        Виртуальная экскурсия
+                    </div>
+                    <div class="caption">
+                        Мультимедиа-гид с технологией дополненной реальности
+                        по историческому центру города Воронежа по улицам Карла Маркса,
+                        Фридриха Энгельса, Никитинской, Средне-Московской
+                    </div>
+                    <a class="details-btn" href="#">
+                        <span class="details-btn_bg"></span>
+                        подробнее
+                    </a>
+                </div>
+            </div>
+            <div class="excursions-slider_slide">
+                <div class="img-wrp">
+                    <img src="assets/img/2012preob.jpg" alt="">
+                </div>
+                <div class="item">
+                    <div class="border"></div>
+                    <div class="title">
+                        Историческая
+                    </div>
+                    <div class="big-title">
+                        Виртуальная экскурсия
+                    </div>
+                    <div class="caption">
+                        Мультимедиа-гид с технологией дополненной реальности
+                        «Объекты культурного наследия Воронежской области», по историческому центру города Острогожска
+                    </div>
+                    <a class="details-btn" href="#">
+                        <span class="details-btn_bg"></span>
+                        подробнее
+                    </a>
+                </div>
+            </div>
+            <div class="excursions-slider_slide">
+                <div class="img-wrp">
+                    <img src="assets/img/unCity.jpg" alt="">
+                </div>
+                <div class="item">
+                    <div class="border"></div>
+                    <div class="title">
+                        Историческая
+                    </div>
+                    <div class="big-title">
+                        Неизвестный город
+                    </div>
+                    <div class="caption">
+                        Интернет-канал «TV Губерния» и Управление по
+                        охране объектов культурного наследия Воронежской области...
+                    </div>
+                    <a class="details-btn" href="#">
+                        <span class="details-btn_bg"></span>
+                        подробнее
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
     <!--HISTORY-->
-    <div class="section"></div>
+    <div class="history section">
+        <h4>История Воронежского края</h4>
+        <div class="carousel">
+            <div class="item">
+                <div class="row>">
+                    <p class="caption"></p>
+                    <div class="">
+                        <img src="" alt=""/>
+                    </div>
+                </div>
+                <div class="row"></div>
+            </div>
+        </div>
+        <div class="carousel-controls">
+        </div>
+    </div>
 
     <!--EVENTS-->
     <div class="section"></div>
 
     <!--ABOUT-->
     <div class="section"></div>
+
+
+    <!--NEWS-->
+    <div class="section"></div>
+
+    <div class="section">
+        <!--PARTNERS-->
+        <div></div>
+
+        <!--FOOTER-->
+        <div></div>
+    </div>
 </div>
-
-<!--NEWS-->
-<div></div>
-
-<!--PARTNERS-->
-<div></div>
-
-<!--FOOTER-->
-<div></div>
-
 <script>
     new fullpage('#fullpage', {
         autoScrolling: true,
         scrollHorizontally: true,
+        scrollBar: true,
+        scrollOverflow: false,
         beforeLeave: function (origin, destination, direction, trigger) {
             const nav = document.querySelectorAll('.navigation-menu')[0];
             if (nav) {
@@ -110,6 +241,28 @@
                 }
             }
         },
+    });
+
+    $(document).ready(function () {
+        $('.video-slider').slick({
+            slidesToShow: 1,
+            infinite: false,
+            arrows: true,
+            nextArrow: '<div class="slider-next"></div>',
+            prevArrow: '<div class="slider-prev"></div>'
+        });
+
+        $('.excursions-slider').slick({
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: false,
+            variableWidth: true,
+            arrows: true,
+            nextArrow: '<div class="slider-next"></div>',
+            prevArrow: '<div class="slider-prev"></div>',
+            appendArrows: $('.header-row')
+        });
+        $('html').style.overflow = 'hidden';
     });
 </script>
 
