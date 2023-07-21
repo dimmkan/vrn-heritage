@@ -1,0 +1,103 @@
+.section__promo {
+  position: relative;
+
+  background-image: url("../img/volont/volont-2-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.blured::before {
+  content: "";
+  position: absolute;
+
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+/* .blured::after {
+  content: "";
+  position: absolute;
+
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+} */
+.blured {
+}
+.promo__container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* gap: 150px; */
+}
+.promo__logo {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: -520px;
+  top: 70px;
+  /* margin-left: 100px; */
+}
+.promo__logo img {
+  width: 320px;
+}
+.promo__content{
+  flex-grow: 1;
+}
+.promo__border {
+  display: flex;
+  flex-direction: row;
+  width: 55%;
+  height: 77%;
+  margin: 2rem auto;
+  padding: 2em;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+      to right,
+      rgba(213, 171, 113, 0.6) 100%,
+      rgba(213, 171, 113, 0.6) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(213, 171, 113, 0.6) 100%,
+      rgba(213, 171, 113, 0.6) 100%
+    ),
+    linear-gradient(to right, transparent 30%, rgba(213, 171, 113, 0.6) 30%),
+    linear-gradient(to bottom, rgba(213, 171, 113, 0.6) 10%, transparent 10%);
+  background-size: 100% 2px, 2px 100%, 150% 2px, 2px 100%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  animation: bg 1.5s cubic-bezier(1, 1, 1, 1) 1;
+  animation-play-state: running;
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  z-index: 6;
+}
+.promo__info{
+  position: relative;
+  left: -120px;
+  top: 70px;
+  align-items: center;
+}
+
+
+@keyframes bg {
+  0% {
+    background-size: 0 2px, 2px 0, 0 2px, 2px 0;
+  }
+  25% {
+    background-size: 0 2px, 2px 0, 0 2px, 2px 100%;
+  }
+  50% {
+    background-size: 100% 2px, 2px 0, 0 0px, 2px 100%;
+  }
+  75% {
+    background-size: 100% 2px, 2px 100%, 0 2px, 2px 100%;
+  }
+  100% {
+    background-size: 100% 2px, 2px 100%, 100% 2px, 2px 100%;
+  }
+}

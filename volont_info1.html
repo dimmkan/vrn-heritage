@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
     <title>АУК ВО ГИИКН</title>
     <link rel="stylesheet" href="assets/css/common.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/button.css" type="text/css" />
     <link rel="stylesheet" href="assets/css/header.css" type="text/css" />
     <link rel="stylesheet" href="assets/css/footer.css" type="text/css" />
-    <link rel="stylesheet" href="assets/css/volont.css" type="text/css" />
-    <link rel="stylesheet" href="assets/css/button.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/volont_info.css" type="text/css" />
+    <!--fullpage-->
+    <link rel="stylesheet" type="text/css" href="fullpage/fullpage.css" />
+    <script type="text/javascript" src="fullpage/fullpage.js"></script>
+    <!--slick-->
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/slick/slick/slick.js"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <nav class="navigation-menu white">
+    <nav class="navigation-menu">
       <div class="navigation-menu__inner-content">
         <a href="#">
           <img src="assets/img/header-logo.png" alt=" " />
         </a>
         <ul>
-          <li><a href="/map.html">архитектура</a></li>
+          <li><a href="map.html">архитектура</a></li>
           <li><a href="#">археология</a></li>
           <li><a href="#">экскурсии</a></li>
           <li><a href="/volont.html">волонтерство</a></li>
@@ -28,66 +33,62 @@
         </ul>
       </div>
     </nav>
-    <main><div class="container"></div></main>
-    <footer class="footer">
-      <hr />
-      <div class="footer__container">
-        <div class="footer__title">Контактная информация</div>
-        <div class="footer__content">
-          <div class="content__col">
-            <div class="col__title">АДРЕС</div>
-            <div class="col__info">
-              <p>394036, г. Воронеж,</p>
-              <p>пр. Революции, 43, 4-й этаж</p>
+    <div id="fullpage">
+      <section class="section__promo section">
+        <div class="promo__container">
+          <div class="promo__content">
+            <div class="promo__border">
+              <div class="promo__logo">
+                <img src="./assets/img/volont/volonteri-kult-logo_1.png" alt="" />
+                <img src="./assets/img/volont/LogoBlueW.png" alt="" />
+              </div>
+              <div class="promo__info">
+                <div class="promo__info__date">14 МАЯ 2022 ГОДА</div>
+                <div class="promo__info__title">Акция «Генеральная уборка»</div>
+                <div class="promo__info__description">
+                  <p>
+                    Акция «Генеральная уборка территории объекта культурного
+                    наследия «Дача Башкирцевых»»
+                  </p>
+                  <p>
+                    Воронежская область, Семилукский район, г. Семилуки, ул.
+                    Дача, 1а. Объект культурного наследия "Дача Башкирцевых"
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="content__col">
-            <div class="col__title">ТЕЛЕФОН</div>
-            <div class="col__info">
-              <p>(473) 255-28-24</p>
-              <p>(473) 255-47-50</p>
-            </div>
-          </div>
-          <div class="content__col">
-            <div class="col__title">ТЕЛ./ФАКС</div>
-            <div class="col__info">
-              <p>(473) 255-57-30</p>
-            </div>
-          </div>
-          <div class="content__col">
-            <div class="col__title">E-MAIL</div>
-            <div class="col__info">
-              <p>aukvogiikn@govvrn.ru</p>
-            </div>
-          </div>
-          <div class="footer__logo">
-            <img
-              class="footer__img"
-              src="assets/img/volont/logo.jpg"
-              alt="Национальные проекты России"
-            />
-            <a href="https://vk.com/public210042428">
-              <img
-                class="social__logo"
-                src="assets/img/vk_logo.png"
-                alt="Сообщество вконтакте"
-              />
-            </a>
-            <a href="https://ok.ru/group/70000001141456">
-              <img
-                class="social__logo"
-                src="assets/img/ok_logo.png"
-                alt="Сообщество вконтакте"
-              />
-            </a>
           </div>
         </div>
-      </div>
-      <hr />
-      <p class="footer__copyright">
-        © АУК ВО «Государственная инспекция историко-культурного наследия»,
-        2013—2023
-      </p>
-    </footer>
+      </section>
+
+      <section class="section"></section>
+
+      <section class="section"></section>
+
+      <section class="section"></section>
+
+      <section class="section"></section>
+
+      <section class="section"></section>
+    </div>
+    <script>
+      new fullpage("#fullpage", {
+        autoScrolling: true,
+        scrollHorizontally: true,
+        scrollBar: true,
+        scrollOverflow: false,
+        beforeLeave: function (origin, destination, direction, trigger) {
+          const nav = document.querySelectorAll(".navigation-menu")[0];
+          if (nav) {
+            if (origin.index === 0) {
+              nav.classList.add("white");
+            }
+            if (destination.index === 0) {
+              nav.classList.remove("white");
+            }
+          }
+        },
+      });
+    </script>
   </body>
 </html>
