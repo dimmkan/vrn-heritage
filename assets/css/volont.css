@@ -79,3 +79,45 @@
   padding-top: 5px;
   padding-right: 5px;
 }
+
+@media screen and (max-width: 1300px) {
+  .container {
+    margin: 0 100px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .container {
+    margin: 0 20px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    margin: 0 10px;
+  }
+  .volont__logo {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: fit-content;
+    gap: 10px;
+
+  }
+  .volont__content{
+    gap: 45px;
+  }
+  .content__card{
+    flex-direction: column;
+    width: 100%;
+  }
+  .card__img{
+    
+    width: calc(100vw - 20px);
+  }
+  .content__text{
+    width: calc(100vw - 20px);
+
+  }
+
+}
