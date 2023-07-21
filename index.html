@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/css/video-slider.css" type="text/css">
     <link rel="stylesheet" href="assets/css/excursions.css" type="text/css">
     <link rel="stylesheet" href="assets/css/history.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/events.css" type="text/css">
     <!--fullpage-->
     <link rel="stylesheet" type="text/css" href="fullpage/fullpage.css"/>
     <script type="text/javascript" src="fullpage/fullpage.js"></script>
@@ -90,7 +91,7 @@
 
     <!--EXCURSIONS-->
     <div class="excursions section">
-        <div class="header-row">
+        <div class="header-row excursions-slider_controls">
             <h4>Виртуальные экскурсии</h4>
         </div>
         <div class="excursions-slider">
@@ -285,7 +286,76 @@
     </div>
 
     <!--EVENTS-->
-    <div class="section"></div>
+    <div class="events section">
+        <div class="header-row events-slider_controls">
+            <h4>Волонтерские события</h4>
+        </div>
+        <div class="events-slider">
+            <div class="events-slider_slide">
+                <div class="img-wrp">
+                    <img src="assets/img/Безымянный-1024x668-1.png" alt="">
+                </div>
+                <div class="item">
+                    <div class="border"></div>
+                    <div class="title">
+                        5 декабря 2022 года
+                    </div>
+                    <div class="big-title">
+                        День волонтера 2022
+                    </div>
+                    <div class="caption">
+                        День волонтера 2022 в России или, как его еще называют, Международный день добровольцев, отмечается 5 дека
+                    </div>
+                    <a class="details-btn" href="#">
+                        <span class="details-btn_bg"></span>
+                        подробнее
+                    </a>
+                </div>
+            </div>
+            <div class="events-slider_slide">
+                <div class="img-wrp">
+                    <img src="assets/img/scale_2400-1024x575.jpg" alt="">
+                </div>
+                <div class="item">
+                    <div class="border"></div>
+                    <div class="title">
+                        14 мая 2022 года
+                    </div>
+                    <div class="big-title">
+                        Акция "Генеральная уборка территории"
+                    </div>
+                    <div class="caption">
+                        Воронежская область, Семилукский район, г. Семилуки, ул. Дача, 1а. Объект культурного наследия "Дача Башки"
+                    </div>
+                    <a class="details-btn" href="#">
+                        <span class="details-btn_bg"></span>
+                        подробнее
+                    </a>
+                </div>
+            </div>
+            <div class="events-slider_slide">
+                <div class="img-wrp">
+                    <img src="assets/img/23085.jpg" alt="">
+                </div>
+                <div class="item">
+                    <div class="border"></div>
+                    <div class="title">
+                        6 мая 2022 года
+                    </div>
+                    <div class="big-title">
+                        Акция "Генеральная уборка на территории Воронежского водохранилища"
+                    </div>
+                    <div class="caption">
+                        Воронежская область, правый берег водохранилища, от санатория им.Горького до участка автомагистрали М4-объ
+                    </div>
+                    <a class="details-btn" href="#">
+                        <span class="details-btn_bg"></span>
+                        подробнее
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--ABOUT-->
     <div class="section"></div>
@@ -338,8 +408,9 @@
             arrows: true,
             nextArrow: '<div class="slider-next"></div>',
             prevArrow: '<div class="slider-prev"></div>',
-            appendArrows: $('.header-row')
+            appendArrows: $('.excursions-slider_controls')
         });
+
         $('.history-slider').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -349,6 +420,17 @@
             nextArrow: '<div class="slider-next"></div>',
             prevArrow: '<div class="slider-prev"></div>',
             appendArrows: $('.history-slider_controls')
+        });
+
+        $('.events-slider').slick({
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: false,
+            variableWidth: true,
+            arrows: true,
+            nextArrow: '<div class="slider-next"></div>',
+            prevArrow: '<div class="slider-prev"></div>',
+            appendArrows: $('.events-slider_controls')
         });
         $('html').style.overflow = 'hidden';
     });
