@@ -1,3 +1,176 @@
+.history-section {
+    display: flex !important;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .history {
-    background-color: rgba(213,171,113,0.07);
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 20%;
+
+    background-color: rgba(213, 171, 113, 0.07);
+}
+
+.history h4 {
+    margin: 0;
+
+    font-family: Prata;
+    font-size: 48px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 2.4px;
+    text-align: left;
+    color: #000000;
+}
+
+.history .caption {
+    position: relative;
+
+    max-width: 600px;
+
+    font-family: PT Sans Caption;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    -webkit-animation: linear 1 normal;
+    -webkit-animation-name: moveToLeft;
+    -webkit-animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.history-slider {
+    margin-top: 50px;
+}
+
+.history-century {
+    position: relative;
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: Prata;
+    font-size: 28px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 1.4px;
+    text-align: center;
+    color: #000000;
+}
+
+.history-century span:last-child {
+    font-family: PT Sans;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 11.2px;
+    text-align: center;
+    color: #000000;
+}
+
+.history-century::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -240px;
+    height: 2px;
+    width: 200px;
+    background-color: #d5ab71;
+}
+
+.history-century::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: -240px;
+    height: 2px;
+    width: 200px;
+    background-color: #d5ab71;
+}
+
+.history .caption::first-letter {
+    font-family: Prata;
+    font-size: 42px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 2.1px;
+    text-align: left;
+    color: #d5ab71;
+    float: left;
+    margin: 0px 4px -11px 0;
+}
+
+.history .row {
+    display: flex;
+}
+
+.history-slider_controls {
+    position: relative;
+}
+
+.history-slider_controls .slider-prev, .history-slider_controls .slider-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 40px !important;
+    height: 40px !important;
+    font-weight: bolder;
+    font-size: 30px;
+    color: rgb(213, 171, 113);
+    z-index: 100;
+    cursor: pointer;
+}
+
+.history-slider_controls .slider-prev:hover, .history-slider_controls .slider-next:hover {
+    color: #000;
+    background-color: rgb(213, 171, 113);
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.history-slider_controls .slider-next {
+    left: 70px;
+}
+
+.history-slider_controls .slider-prev {
+    left: 0;
+}
+
+.history-slider_controls .slider-next:before {
+    content: ">";
+    color: inherit;
+}
+
+.history-slider_controls .slider-prev:before {
+    content: "<";
+    color: inherit;
+}
+
+@keyframes moveToLeft {
+    0% {
+        left: 10px;
+        color: rgb(0, 0, 0, .4);
+    }
+    100% {
+        left: 0px;
+        color: rgb(0, 0, 0, 1);
+    }
 }
