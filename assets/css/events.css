@@ -79,15 +79,6 @@
     border-bottom: 2px solid #d5ab71;
 }
 
-.events .title:after {
-    content: '';
-    position: absolute;
-    top: 6px;
-    right: -8px;
-    width: 70px;
-    border-bottom: 1px solid #d5ab71;
-}
-
 .events .big-title {
     font-family: Prata;
     font-size: 24px;
