@@ -43,7 +43,7 @@
     z-index: 1;
 }
 
-.video-slider .slider-prev, .slider-next {
+.video-slider .slider-prev, .video-slider .slider-next {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,7 +58,7 @@
     cursor: pointer;
 }
 
-.video-slider .slider-prev:hover, .slider-next:hover {
+.video-slider .slider-prev:hover, .video-slider .slider-next:hover {
     color: #000;
     background-color: rgb(213, 171, 113);
     border-radius: 50%;

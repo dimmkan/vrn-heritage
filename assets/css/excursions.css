@@ -170,7 +170,7 @@
     margin-right: 50px;
 }
 
-.excursions .slider-prev, .slider-next {
+.excursions .slider-prev, .excursions .slider-next {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,7 +185,7 @@
     cursor: pointer;
 }
 
-.excursions .slider-prev:hover, .slider-next:hover {
+.excursions .slider-prev:hover, .excursions .slider-next:hover {
     color: #000;
     background-color: rgb(213, 171, 113);
     border-radius: 50%;
