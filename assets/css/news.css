@@ -1,0 +1,119 @@
+.news {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+
+    padding-top: 200px;
+}
+
+.news .item {
+    position: relative;
+    width: 450px;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.news .item .border-left {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    border-left: 2px solid transparent;
+    border-image: 1 linear-gradient(0deg, transparent 0%, transparent 50%, rgba(213,171,113, .6) 50%, rgba(213,171,113, .6) 100% );
+}
+
+.news .item .border-bottom {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    border-bottom: 2px solid transparent;
+    border-image: 1 linear-gradient(90deg, transparent 0%, transparent 80%, rgba(213,171,113, .6) 80%, rgba(213,171,113, .6) 100% );
+}
+
+.news .item .border-other {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    border-top: 2px solid rgba(213,171,113, .6);
+    border-right: 2px solid rgba(213,171,113, .6);
+}
+
+.news .item .title {
+    position: relative;
+
+    align-self: center;
+
+    margin-top: 20px;
+    margin-left: 20px;
+
+    color: #d5ab71;
+    font-size: 11px;
+    font-weight: 300;
+    text-transform: uppercase;
+
+    z-index: 2;
+}
+
+.news .item p {
+    margin: 5px 0;
+}
+
+.news .item .header {
+    font-family: Prata;
+    font-size: 24px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: 1.2px;
+    text-align: left;
+    color: #000000;
+}
+
+.news .item .desc {
+    margin-bottom: 20px;
+
+    font-family: PT Sans Caption;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.news .item .desc:first-letter {
+    font-family: Prata;
+    font-size: 42px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 2.1px;
+    text-align: left;
+    color: #d5ab71;
+    float: left;
+    margin: 0px 4px -11px 0;
+}
+
+.news .item .title:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -40px;
+    width: 30px;
+    border-bottom: 2px solid #d5ab71;
+}
