@@ -1,0 +1,24 @@
+.partners {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    margin-top: 200px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.partners_item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.partners_item img {
+    width: 100px;
+}
+
+.partners_item a {
+    text-decoration: none !important;
+}
