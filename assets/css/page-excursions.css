@@ -1,0 +1,92 @@
+.navigation-menu {
+    position: relative;
+}
+
+.excursions {
+    margin-left: 200px;
+}
+
+.excursions .content {
+    margin-top: 60px;
+    margin-bottom: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 115px;
+}
+
+.excursions .card {
+    width: 95%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    column-gap: 25px;
+}
+
+.excursions .image-wrapper {
+    flex-shrink: 0;
+    width: 475px;
+}
+
+.excursions .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.excursions .date {
+    font-family: PT Sans Caption;
+    font-size: 12px;
+    color: #d5ab71;
+}
+
+.excursions .title {
+    margin-bottom: 24px;
+    font-family: Prata;
+    font-size: 24px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: 1.2px;
+    color: #000000;
+}
+
+.excursions .link {
+    font-family: "Open Sans",sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #929292;
+    -webkit-font-smoothing: antialiased;
+
+    text-decoration: none !important;
+    transition: 0.2s;
+}
+
+.excursions .link:hover {
+    color: #d5ab71;
+    text-decoration: none;
+}
+
+.excursions .caption {
+    margin-bottom: 30px;
+    font-family: PT Sans Caption;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: #000000;
+}
+.excursions .caption::first-letter {
+    color: #d5ab71;
+    font-size: 300%;
+    line-height: calc(1.71 * 0.5);
+    float: left;
+    padding-top: 5px;
+    padding-right: 5px;
+}
