@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>АУК ВО ГИИКН</title>
+    <link rel="stylesheet" href="assets/css/common.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/button.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/header.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/footer.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/volont_info.css" type="text/css" />
+    <!--fullpage-->
+    <link rel="stylesheet" type="text/css" href="fullpage/fullpage.css" />
+    <script type="text/javascript" src="fullpage/fullpage.js"></script>
+    <!--slick-->
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/slick/slick/slick.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <nav class="navigation-menu">
+      <div class="navigation-menu__inner-content">
+        <a href="#">
+          <img src="assets/img/header-logo.png" alt=" " />
+        </a>
+        <ul>
+          <li><a href="map.html">архитектура</a></li>
+          <li><a href="#">археология</a></li>
+          <li><a href="#">экскурсии</a></li>
+          <li><a href="/volont.html">волонтерство</a></li>
+          <li><a href="#">энциклопедия</a></li>
+          <li><a href="#">вопрос-ответ</a></li>
+          <li><a href="#">о нас</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="fullpage">
+      <section class="section__promo section">
+        <div class="promo__container">
+          <div class="promo__content">
+            <div class="promo__border">
+              <div class="promo__logo">
+                <img src="./assets/img/volont/volonteri-kult-logo_1.png" alt="" />
+                <img src="./assets/img/volont/LogoBlueW.png" alt="" />
+              </div>
+              <div class="promo__info">
+                <div class="promo__info__date">14 МАЯ 2022 ГОДА</div>
+                <div class="promo__info__title">Акция «Генеральная уборка»</div>
+                <div class="promo__info__description">
+                  <p>
+                    Акция «Генеральная уборка территории объекта культурного
+                    наследия «Дача Башкирцевых»»
+                  </p>
+                  <p>
+                    Воронежская область, Семилукский район, г. Семилуки, ул.
+                    Дача, 1а. Объект культурного наследия "Дача Башкирцевых"
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section"></section>
+
+      <section class="section"></section>
+
+      <section class="section"></section>
+
+      <section class="section"></section>
+
+      <section class="section"></section>
+    </div>
+    <script>
+      new fullpage("#fullpage", {
+        autoScrolling: true,
+        scrollHorizontally: true,
+        scrollBar: true,
+        scrollOverflow: false,
+        beforeLeave: function (origin, destination, direction, trigger) {
+          const nav = document.querySelectorAll(".navigation-menu")[0];
+          if (nav) {
+            if (origin.index === 0) {
+              nav.classList.add("white");
+            }
+            if (destination.index === 0) {
+              nav.classList.remove("white");
+            }
+          }
+        },
+      });
+    </script>
+  </body>
+</html>
