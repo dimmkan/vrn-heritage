@@ -1,0 +1,96 @@
+.page-about {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.page-about img {
+    margin-left: 20px;
+    float: left;
+}
+
+.page-about .title {
+    font-family: "Segoe UI",Arial,sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.page-about .subtitle {
+    font-family: "Segoe UI",Arial,sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.page-about .text-row {
+    margin: 0 0 10px;
+
+    font-family: PT Sans Caption;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    text-align: justify;
+    color: #000000;
+}
+
+.page-about .paragraph {
+    font-family: PT Sans Caption;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    text-align: justify;
+    color: #000000;
+}
+
+.page-about .paragraph:first-letter {
+    font-family: Prata;
+    font-size: 42px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 2.1px;
+    text-align: left;
+    color: #d5ab71;
+    float: left;
+    margin: 0px 4px -11px 0;
+}
+
+.page-about a {
+    display: inline-block;
+
+    color: black;
+    font-size: 15px;
+
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.page-about a:hover {
+    color: #d5ab71;
+}
+
+.page-about a.policy {
+    margin-top: 20px;
+
+    color: #d5ab71;
+}
+
+.page-about a.policy:hover {
+    border-bottom: 1px solid #d5ab71;
+}
+
+.navigation-menu {
+    position: relative;
+}
