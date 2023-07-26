@@ -92,6 +92,7 @@
     top: 220px;
     left: 400px;
 
+    font-family: Verdana, sans-serif;
     color: #d5ab71;
     font-size: 15px;
     font-weight: 300;
@@ -126,6 +127,7 @@
 
     margin: 0;
 
+    font-family: Prata, serif;
     font-size: 60px;
     font-weight: normal;
     letter-spacing: 3px;
@@ -142,6 +144,7 @@
 
     width: 800px;
 
+    font-family: PT Sans Caption, serif;
     font-size: 14px;
     font-weight: normal;
     font-style: normal;
