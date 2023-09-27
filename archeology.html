@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"/>
+    <title>АУК ВО ГИИКН</title>
+    <link rel="stylesheet" href="assets/css/common.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/button.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/header.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/footer.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/volont_info.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="fullpage/fullpage.css"/>
+</head>
+<body>
+
+<nav class="navigation-menu white">
+    <div class="navigation-menu__inner-content">
+        <a href="#">
+            <img src="assets/img/header-logo.png" alt=" "/>
+        </a>
+        <ul>
+            <li><a href="map.html">архитектура</a></li>
+            <li><a href="archeology.html">археология</a></li>
+            <li><a href="excursions.html">экскурсии</a></li>
+            <li><a href="volont.html">волонтерство</a></li>
+            <li><a href="#">энциклопедия</a></li>
+            <li><a href="#">вопрос-ответ</a></li>
+            <li><a href="about.html">о нас</a></li>
+        </ul>
+    </div>
+</nav>
+
+<style>
+    nav{
+        position: static !important;
+    }
+    .mainTitle{
+        font-family: Prata;
+        font-size: 48px;
+        color: black;
+        margin-left: 10%;
+    }
+    .cub-cub {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 700px);
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-top: 20px;;
+        grid-gap: 10px;
+    }
+
+    .cub {
+        grid-row: 1;
+        border: 1rem solid;
+    }
+    .row {
+        grid-row: 2;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        border: 1rem solid;
+    }
+    .little-cub {
+        grid-row: 3;
+        height: 400px;
+        border: 1rem solid;
+    }
+</style>
+
+<main>
+    <div class="container">
+
+        <span class="mainTitle">Полевой сезон</span>
+
+        <div class="cub-cub">
+            <div class="cub">
+                <div class="cub1"></div>
+                <div class="cub2"></div>
+                <div class="line"></div>
+                <div class="text-block"></div>
+                <div class="button"></div>
+            </div>
+
+            <div class="cub">
+
+            </div>
+
+            <div class="cub">
+
+            </div>
+
+            <div class="row">
+
+            </div>
+
+            <div class="little-cub">
+
+            </div>
+
+            <div class="little-cub">
+
+            </div>
+
+            <div class="little-cub">
+
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer class="footer">
+    <hr/>
+    <div class="footer__container">
+        <div class="footer__title">Контактная информация</div>
+        <div class="footer__content">
+            <div class="content__col">
+                <div class="col__title">АДРЕС</div>
+                <div class="col__info">
+                    <p>394036, г. Воронеж,</p>
+                    <p>пр. Революции, 43, 4-й этаж</p>
+                </div>
+            </div>
+            <div class="content__col">
+                <div class="col__title">ТЕЛЕФОН</div>
+                <div class="col__info">
+                    <p>(473) 255-28-24</p>
+                    <p>(473) 255-47-50</p>
+                </div>
+            </div>
+            <div class="content__col">
+                <div class="col__title">ТЕЛ./ФАКС</div>
+                <div class="col__info">
+                    <p>(473) 255-57-30</p>
+                </div>
+            </div>
+            <div class="content__col">
+                <div class="col__title">E-MAIL</div>
+                <div class="col__info">
+                    <p>aukvogiikn@govvrn.ru</p>
+                </div>
+            </div>
+            <div class="footer__logo">
+                <img class="footer__img"
+                     src="assets/img/volont/logo.jpg"
+                     alt="Национальные проекты России"
+                />
+                <a href="https://vk.com/public210042428">
+                    <img class="social__logo"
+                         src="assets/img/vk_logo.png"
+                         alt="Сообщество вконтакте"
+                    />
+                </a>
+                <a href="https://ok.ru/group/70000001141456">
+                    <img class="social__logo"
+                         src="assets/img/ok_logo.png"
+                         alt="Сообщество вконтакте"
+                    />
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <p class="footer__copyright">© АУК ВО «Государственная инспекция историко-культурного наследия», 2013—2023</p>
+</footer>
+
+</body>
+</html>
